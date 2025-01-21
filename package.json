@@ -1,0 +1,30 @@
+{
+  "name": "mohit-website-globe",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "open": "vite --open",
+    "open:preview": "vite preview --open",
+    "open:build": "vite build & vite preview --open"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "cesium": "^1.125.0",
+    "fontawesome": "^5.6.3",
+    "pinia": "^2.3.1",
+    "vite-plugin-static-copy": "^2.2.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.5"
+  }
+}
