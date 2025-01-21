@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Globe from "./Globe.vue";
+import InvalidPage from "./pages/InvalidPage.vue";
 
-const personalRoutes = [
+const globeRoutes = [
     { path: "/", name: "Main Globe Page", component: Globe },
     { path: "/globe", redirect: "/" },
+    { path: '/:catchAll(.*)', name: 'NotFound', component: InvalidPage },
 ];
 
 const globeRouter = createRouter({
