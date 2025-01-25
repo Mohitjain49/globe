@@ -14,7 +14,13 @@ import * as FaBrands from '@fortawesome/free-brands-svg-icons';
 library.add(
     FaIcons.faMapPin,
     FaIcons.faMagnifyingGlass,
-    FaIcons.faX
+    FaIcons.faX,
+    FaIcons.faHouse,
+    FaIcons.faMapLocationDot,
+    FaIcons.faDisplay,
+    FaIcons.faLaptopCode,
+    FaIcons.faExpand,
+    FaIcons.faCompress
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).

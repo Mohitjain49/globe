@@ -1,5 +1,6 @@
 <script setup>
-import GlobeBar from './components/GlobeBar.vue';
+import GlobeAppBar from './components/GlobeAppBar.vue';
+// import GlobeBar from './components/GlobeBar.vue';
 import GlobePoints from './components/GlobePoints.vue';
 
 import GlobeRCM from './components/GlobeRCM.vue';
@@ -29,7 +30,7 @@ onUnmounted(() => {
     </div>
 </div>
 
-<GlobeBar />
+<GlobeAppBar />
 <Transition name="globeMenuTransition" appear fade>
     <GlobePoints v-if="globeStore.featureIndex == 2" />
 </Transition>
