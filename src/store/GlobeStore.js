@@ -2,6 +2,7 @@ import orange_location_dot from "../assets/location-dots/Orange_Location_Dot.svg
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
+import { usePageViewStore, useDateStore, useScreenStore } from "./ExtraStores.js";
 import AppGlobe from "./AppGlobe.js";
 import * as Cesium from 'cesium';
 
@@ -9,6 +10,10 @@ export const CESIUM_GLOBE_ID = "mohit-website-globe";
 export const CESIUM_GEOCODER_ID = "mohit-website-geocoder";
 
 export const useGlobeStore = defineStore("globe-store", () => {
+    const pageViewStore = usePageViewStore();
+    const dateStore = useDateStore();
+    const screenStore = useScreenStore();
+
     /**
      * @type {import('vue').Ref<AppGlobe>} This is the Cesium Globe that is used within the webpage.
      */
@@ -52,6 +57,10 @@ export const useGlobeStore = defineStore("globe-store", () => {
 
         cesiumGlobe.value = new AppGlobe(CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID);
         mapPoints.value = new MapPoints(cesiumGlobe.value.viewer);
+
+        pageViewStore.setPageViewEL();
+        dateStore.startDateInterval();
+        screenStore.setFullScreenEL();
         setGlobeELs();
     }
 
@@ -67,6 +76,10 @@ export const useGlobeStore = defineStore("globe-store", () => {
         setFeatureIndex();
         hoverPointHandler.value.setTitle();
         globeRCMHandler.value.removeRCMResizeEL();
+
+        pageViewStore.removePageViewEL();
+        dateStore.stopDateInterval();
+        screenStore.removeFullScreenEL();
 
         removeGlobeELs();
         mapPoints.value.clearMapPoints();

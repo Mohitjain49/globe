@@ -1,38 +1,94 @@
 <template>
 <div class="globe-appBar">
-    <div class="globe-appBar-side" style="justify-content: left;">
+    <div id="globe-appBar-left" class="globe-appBar-side" style="justify-content: left;">
         <a :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
             <font-awesome-icon icon="fa-house" />
         </a>
     </div>
     <div class="globe-appBar-center center-flex-display">
-        <div class="globe-appBar-icon globe-appBar-mainOpt" :title="SEARCH_ICON_TITLE">
+        <a v-if="checkMobileMode()" :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
+            <font-awesome-icon icon="fa-house" />
+        </a>
+        <div :class="getMainOptClass()" :title="SEARCH_ICON_TITLE">
             <font-awesome-icon icon="fa-map-location-dot" />
             <span>Search</span>
         </div>
-        <div class="globe-appBar-icon globe-appBar-mainOpt" :title="INTERESTS_ICON_TITLE">
+        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE">
             <font-awesome-icon icon="fa-display" />
             <span>My Hobbies</span>
         </div>
-        <div class="globe-appBar-icon globe-appBar-mainOpt" :title="WORK_ICON_TITLE">
+        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE">
             <font-awesome-icon icon="fa-laptop-code" />
             <span>My Career</span>
         </div>
     </div>
     <div class="globe-appBar-side" style="justify-content: right;">
-        <div class="globe-appBar-icon" :title="HOME_ICON_TITLE">
-            <font-awesome-icon icon="fa-expand" />
+        <div class="globe-appBar-icon" :title="SETTINGS_ICON_TITLE">
+            <font-awesome-icon icon="fa-gear" />
+        </div>
+        <div :class="['globe-appBar-icon', timeIconClass]" @click="toggleTimeClass()"
+            :title="(getTimeClassBoolean() ? 'Click To Hide Time' : 'Click To Show Time')">
+
+            <font-awesome-icon v-if="!getTimeClassBoolean()" icon="fa-clock" />
+            <template v-if="getTimeClassBoolean()">
+                <span> {{ dateStore.dateStrings.timeSection }} </span>
+                <span> {{ dateStore.dateStrings.daySection }} </span>
+            </template>
+        </div>
+        <div v-if="!checkMobileMode()" class="globe-appBar-icon"
+            :title="screenStore.elementTitle"
+            @click="screenStore.setFullScreen()">
+            
+            <font-awesome-icon :icon="screenStore.faIcon" />
         </div>
     </div>
 </div>
 </template>
 
 <script setup>
-import { MAIN_WEBSITE } from '@/routes.js';
+import { MAIN_WEBSITE } from '../routes.js';
+
+import { ref } from 'vue';
+import { usePageViewStore, useDateStore, useScreenStore } from '../store/ExtraStores.js';
+
+const pageViewStore = usePageViewStore();
+const dateStore = useDateStore();
+const screenStore = useScreenStore();
+const timeIconClass = ref('globe-appBar-time');
+
+/**
+ * This function toggles whether the time section shows the time or just a clock icon.
+ */
+function toggleTimeClass() {
+    timeIconClass.value = (getTimeClassBoolean() ? '' : 'globe-appBar-time');
+}
+
+/**
+ * This returns true if the time is displayed, false is its just a time icon.
+ */
+function getTimeClassBoolean() {
+    return (timeIconClass.value === 'globe-appBar-time');
+}
+
+/**
+ * This returns the classes for the main options of the app bar.
+ */
+function getMainOptClass() {
+    return ['globe-appBar-icon', (checkMobileMode() ? '' : 'globe-appBar-mainOpt')];
+}
+
+/**
+ * This returns whether or not the page view is in mobile mode.
+ */
+function checkMobileMode() {
+    return (pageViewStore.pageView == 1);
+}
+
 const HOME_ICON_TITLE = ("Back To Main Website (" + MAIN_WEBSITE + ")");
 const SEARCH_ICON_TITLE = "Search Locations";
 const INTERESTS_ICON_TITLE = "My Hobbies";
 const WORK_ICON_TITLE = "My Career";
+const SETTINGS_ICON_TITLE = "Settings";
 </script>
 
 <style scoped>
@@ -49,7 +105,7 @@ const WORK_ICON_TITLE = "My Career";
     align-items: center;
 }
 .globe-appBar-side {
-    width: 200px;
+    width: 165px; /* This is the width of the "longer" side. */
     height: 100%;
     display: flex;
     align-items: center;
@@ -61,8 +117,9 @@ const WORK_ICON_TITLE = "My Career";
 }
 
 .globe-appBar-icon {
+    user-select: none;
     cursor: pointer;
-    width: 50px;
+    width: 45px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -81,9 +138,6 @@ const WORK_ICON_TITLE = "My Career";
     width: fit-content;
     padding: 4px 15px;
     margin: 0px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 2px solid var(--blue-five);
     border-radius: 7px;
     color:var(--blue-five);
@@ -91,8 +145,28 @@ const WORK_ICON_TITLE = "My Career";
 }
 .globe-appBar-mainOpt span {
     font-family: 'Lexend', sans-serif;
-    font-size: 18px;
     font-weight: bold;
     margin-left: 5px;
+}
+
+.globe-appBar-time {
+    width: 85px;
+    flex-direction: column;
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    color:var(--blue-five);
+    font-size: 14px;
+}
+.globe-appBar-time span {
+    display: block !important;
+}
+
+@media (max-width: 850px) {
+    #globe-appBar-left {
+        display: none;
+    }
+    .globe-appBar-icon span {
+        display: none;
+    }
 }
 </style>

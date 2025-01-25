@@ -20,7 +20,9 @@ library.add(
     FaIcons.faDisplay,
     FaIcons.faLaptopCode,
     FaIcons.faExpand,
-    FaIcons.faCompress
+    FaIcons.faCompress,
+    FaIcons.faClock,
+    FaIcons.faGear
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).
