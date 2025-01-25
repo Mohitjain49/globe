@@ -22,7 +22,10 @@ library.add(
     FaIcons.faExpand,
     FaIcons.faCompress,
     FaIcons.faClock,
-    FaIcons.faGear
+    FaIcons.faGear,
+    FaIcons.faPaperPlane,
+    FaIcons.faGlobe,
+    FaIcons.faFileLines
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).

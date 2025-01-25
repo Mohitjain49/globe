@@ -4,11 +4,20 @@
         <a :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
             <font-awesome-icon icon="fa-house" />
         </a>
+        <RouterLink to="/resume" class="globe-appBar-icon" :title="RESUME_ICON_TITLE">
+            <font-awesome-icon icon="fa-file-lines" />
+        </RouterLink>
     </div>
     <div class="globe-appBar-center center-flex-display">
-        <a v-if="checkMobileMode()" :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
-            <font-awesome-icon icon="fa-house" />
-        </a>
+        <template v-if="checkMobileMode()">
+            <a :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
+                <font-awesome-icon icon="fa-house" />
+            </a>
+            <RouterLink to="/resume" class="globe-appBar-icon" :title="RESUME_ICON_TITLE">
+                <font-awesome-icon icon="fa-file-lines" />
+            </RouterLink>
+        </template>
+        
         <div :class="getMainOptClass()" :title="SEARCH_ICON_TITLE">
             <font-awesome-icon icon="fa-map-location-dot" />
             <span>Search</span>
@@ -85,6 +94,7 @@ function checkMobileMode() {
 }
 
 const HOME_ICON_TITLE = ("Back To Main Website (" + MAIN_WEBSITE + ")");
+const RESUME_ICON_TITLE = "View My Resume";
 const SEARCH_ICON_TITLE = "Search Locations";
 const INTERESTS_ICON_TITLE = "My Hobbies";
 const WORK_ICON_TITLE = "My Career";
