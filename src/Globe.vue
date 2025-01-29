@@ -1,10 +1,11 @@
 <script setup>
 import GlobeAppBar from './components/GlobeAppBar.vue';
-// import GlobeBar from './components/GlobeBar.vue';
 import GlobePoints from './components/GlobePoints.vue';
 
 import GlobeRCM from './components/GlobeRCM.vue';
 import GlobeHover from './components/GlobeHover.vue';
+
+import SearchMenu from './menus/SearchMenu.vue';
 
 import { useGlobeStore, CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID } from './store/GlobeStore.js';
 import { onMounted, onUnmounted } from 'vue';
@@ -37,4 +38,6 @@ onUnmounted(() => {
 
 <GlobeRCM v-if="globeStore.globeRCMHandler.rcmOpen == 0" />
 <GlobeHover v-if="globeStore.hoverPointHandler.title !== ''" />
+
+<SearchMenu />
 </template>
