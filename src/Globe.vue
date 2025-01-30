@@ -7,13 +7,14 @@ import GlobeHover from './components/GlobeHover.vue';
 
 import SearchMenu from './menus/SearchMenu.vue';
 
-import { useGlobeStore, CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID } from './store/GlobeStore.js';
+import { useGlobeStore, CESIUM_GLOBE_ID } from './store/GlobeStore.js';
 import { onMounted, onUnmounted } from 'vue';
 
 import './styles/globestyle.css';
 import "./styles/globemenus.css";
 
 const globeStore = useGlobeStore();
+
 onMounted(() => {
     document.title = "Mohit Jain | My Globe";
     globeStore.mountGlobeStore();
@@ -34,5 +35,5 @@ onUnmounted(() => {
 <GlobeRCM v-if="globeStore.globeRCMHandler.rcmOpen == 0" />
 <GlobeHover v-if="globeStore.hoverPointHandler.title !== ''" />
 
-<SearchMenu v-if="false" />
+<SearchMenu v-if="globeStore.menuOpen == 0" />
 </template>

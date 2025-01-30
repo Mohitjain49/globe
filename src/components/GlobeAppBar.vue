@@ -9,15 +9,15 @@
         </RouterLink>
     </div>
     <div class="globe-appBar-center center-flex-display">
-        <div :class="getMainOptClass()" :title="SEARCH_ICON_TITLE">
+        <div :class="getMainOptClass()" :title="SEARCH_ICON_TITLE" @click="globeStore.setMenuOpen(0)">
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
         </div>
-        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE">
+        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
             <font-awesome-icon icon="fa-display" />
             <span>Hobbies</span>
         </div>
-        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE">
+        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(2)">
             <font-awesome-icon icon="fa-laptop-code" />
             <span>Career</span>
         </div>
@@ -26,7 +26,7 @@
         <div class="globe-appBar-icon" :title="SETTINGS_ICON_TITLE">
             <font-awesome-icon icon="fa-gear" />
         </div>
-        <div class="globe-appBar-icon" @click="toggleTimeClass()">
+        <div class="globe-appBar-icon">
             <font-awesome-icon icon="fa-clock" />
         </div>
         <div v-if="!checkMobileMode()" class="globe-appBar-icon"
@@ -41,8 +41,10 @@
 
 <script setup>
 import { MAIN_WEBSITE } from '../routes.js';
+import { useGlobeStore } from '../store/GlobeStore.js';
 import { usePageViewStore, useDateStore, useScreenStore } from '../store/ExtraStores.js';
 
+const globeStore = useGlobeStore();
 const pageViewStore = usePageViewStore();
 // const dateStore = useDateStore();
 const screenStore = useScreenStore();

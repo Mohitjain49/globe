@@ -14,6 +14,8 @@ export const useGlobeStore = defineStore("globe-store", () => {
     const dateStore = useDateStore();
     const screenStore = useScreenStore();
 
+    const menuOpen = ref(0);
+
     /**
      * @type {import('vue').Ref<AppGlobe>} This is the Cesium Globe that is used within the webpage.
      */
@@ -57,6 +59,9 @@ export const useGlobeStore = defineStore("globe-store", () => {
 
         cesiumGlobe.value = new AppGlobe();
         mapPoints.value = new MapPoints(cesiumGlobe.value.viewer);
+
+        menuOpen.value = ((window.innerWidth > 600) ? 0 : -1);
+        if(menuOpen.value == 0) { cesiumGlobe.value.setGeocoder(); }
 
         pageViewStore.setPageViewEL();
         dateStore.startDateInterval();
@@ -161,6 +166,14 @@ export const useGlobeStore = defineStore("globe-store", () => {
     }
 
     /**
+     * This sets which menu should be opened. 
+     * @param {Number} index The index of the menu. Default value is -1.
+     */
+    function setMenuOpen(index = -1) {
+        menuOpen.value = ((menuOpen.value == index) ? -1 : index);
+    }
+
+    /**
      * This sets the status of whether or not the Geocoder is visible or not.
      */
     function setGeocoderDisplay() {
@@ -235,7 +248,10 @@ export const useGlobeStore = defineStore("globe-store", () => {
     return { cesiumGlobe, mapPoints, globeRCMHandler, hoverPointHandler, geocoderDisplay,
         featureIndex, geocoderBtnTitle, globePresent, rcmZoomPosition, hoverPoint,
         mountGlobeStore, unmountGlobeStore, setGeocoderDisplay, setFeatureIndex,
-        setPointImage, callZoomToPoint, zoomToSelectedPosition, closeRCM
+        setPointImage, callZoomToPoint, zoomToSelectedPosition, closeRCM,
+
+        menuOpen,
+        setMenuOpen
     }
 })
 

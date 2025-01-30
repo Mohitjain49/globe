@@ -1,8 +1,8 @@
 .globeApp-menu {
     position: absolute;
-    top: 65px;
+    top: 15px;
     right: 15px;
-    height: calc(100% - 85px);
+    height: calc(100% - 30px);
     width: 400px;
     background: var(--orange-light);
     border: 2px solid var(--blue-three);
@@ -49,7 +49,8 @@
 
 @media (max-width: 600px) {
     .globeApp-menu {
-        width: calc(100% - 30px);
-        left: 13px;
+        width: calc(100% - 85px);
+        left: 70px;
+        right: auto;
     }
 }
