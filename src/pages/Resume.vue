@@ -1,17 +1,19 @@
 <template>
 <div class="resume-sidebar">
     <RouterLink to="/" class="resume-sidebar-icon" :title="GLOBE_ICON_TITLE">
-        <font-awesome-icon icon="fa-globe" />
+        <font-awesome-icon icon="fa-arrow-left" style="font-size: 25px;" />
         <span>Globe</span>
     </RouterLink>
-    <a :href="MAIN_WEBSITE" class="resume-sidebar-icon" :title="HOME_ICON_TITLE">
-        <font-awesome-icon icon="fa-house" />
-        <span>Home</span>
-    </a>
-    <a :href="CONTACT_LINK" class="resume-sidebar-icon" :title="CONTACT_ICON_TITLE">
-        <font-awesome-icon icon="fa-paper-plane" />
-        <span>Contact</span>
-    </a>
+    <div>
+        <a :href="CONTACT_LINK" class="resume-sidebar-icon" :title="CONTACT_ICON_TITLE">
+            <font-awesome-icon icon="fa-paper-plane" />
+            <span>Contact</span>
+        </a>
+        <a :href="MAIN_WEBSITE" class="resume-sidebar-icon" :title="HOME_ICON_TITLE">
+            <font-awesome-icon icon="fa-house" />
+            <span>Home</span>
+        </a>
+    </div>
 </div>
 
 <div id="resume-container" @click="() => {webData.setNavBarDropdown(-1)}">
@@ -54,6 +56,10 @@ const CONTACT_ICON_TITLE = "Contact Me!"
     width: 50px;
     height: 100%;
     background: var(--blue-one);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 /**
@@ -63,7 +69,7 @@ const CONTACT_ICON_TITLE = "Contact Me!"
 .resume-sidebar-icon {
     user-select: none;
     cursor: pointer;
-    width: 100%;
+    width: 50px;
     height: 52px;
     padding-top: 5px;
     display: flex;

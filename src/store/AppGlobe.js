@@ -63,7 +63,7 @@ export default class AppGlobe {
      */
     destroyMap() {
         this.viewer.destroy();
-        this.geocoder.destroy();
+        if(this.geocoder != null) { this.geocoder.destroy(); }
         
         this.viewer = null;
         this.geocoder = null;

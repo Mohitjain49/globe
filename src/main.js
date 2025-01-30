@@ -17,6 +17,7 @@ library.add(
     FaIcons.faX,
     FaIcons.faCircleXmark,
     FaIcons.faHouse,
+    FaIcons.faArrowLeft,
     FaIcons.faMapLocationDot,
     FaIcons.faDisplay,
     FaIcons.faLaptopCode,
