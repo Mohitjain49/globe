@@ -103,16 +103,18 @@ const SETTINGS_ICON_TITLE = "Settings";
 
 <style scoped>
 .globe-appBar {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 49px;
     background: linear-gradient(to top, var(--blue-one) 0%, var(--blue-two) 100%);
     z-index: 5;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid var(--blue-five);
+    min-width: 350px;
 }
 .globe-appBar-side {
     width: 165px; /* This is the width of the "longer" side. */

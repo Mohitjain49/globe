@@ -24,12 +24,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-<div :id="CESIUM_GLOBE_ID">
-    <div :id="CESIUM_GEOCODER_ID" :style="globeStore.geocoderDisplay"
-        @click="globeStore.closeRCM"
-        @contextmenu="globeStore.closeRCM">
-    </div>
-</div>
+<div :id="CESIUM_GLOBE_ID"></div>
 
 <GlobeAppBar />
 <Transition name="globeMenuTransition" appear fade>

@@ -15,6 +15,7 @@ library.add(
     FaIcons.faMapPin,
     FaIcons.faMagnifyingGlass,
     FaIcons.faX,
+    FaIcons.faCircleXmark,
     FaIcons.faHouse,
     FaIcons.faMapLocationDot,
     FaIcons.faDisplay,

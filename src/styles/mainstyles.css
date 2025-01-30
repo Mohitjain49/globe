@@ -44,16 +44,6 @@ h1, h2, h3, p {
     font-family: 'Trebuchet MS', 'Calibri', sans-serif;
     color: var(--website-text);
 }
-
-.personal-web-body {
-    position: absolute;
-    top: 50px;
-    height: auto;
-    min-height: calc(100% - 50px);
-    width: 100%;
-    min-width: 340px;
-    background: var(--webpage-background);
-}
 .center-flex-display {
     display: flex;
     justify-content: center;
@@ -88,4 +78,10 @@ h1, h2, h3, p {
     left: 0;
     z-index: 5000;
     background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 350px) {
+    body {
+        overflow-x: auto !important;
+    }
 }
