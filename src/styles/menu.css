@@ -1,7 +1,7 @@
 .globeApp-menu {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 65px;
+    right: 15px;
     height: calc(100% - 85px);
     width: 400px;
     background: var(--orange-light);
@@ -47,7 +47,7 @@
     overflow-y: auto;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 600px) {
     .globeApp-menu {
         width: calc(100% - 30px);
         left: 13px;

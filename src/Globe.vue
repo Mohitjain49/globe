@@ -34,5 +34,5 @@ onUnmounted(() => {
 <GlobeRCM v-if="globeStore.globeRCMHandler.rcmOpen == 0" />
 <GlobeHover v-if="globeStore.hoverPointHandler.title !== ''" />
 
-<SearchMenu />
+<SearchMenu v-if="false" />
 </template>

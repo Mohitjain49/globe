@@ -1,10 +1,10 @@
 #mohit-website-globe {
     position: absolute;
-    height: calc(100% - 50px);
-    width: 100%;
-    min-width: 350px;
-    top: 0%;
-    right: 0%;
+    height: 100%;
+    width: calc(100% - 55px);
+    min-width: 295px;
+    top: 0px;
+    left: 55px;
 }
 #mohit-website-geocoder {
     position: relative;

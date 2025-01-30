@@ -55,7 +55,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
         globeRCMHandler.value.setRCMResizeEL();
         hoverPointHandler.value.setTitle();
 
-        cesiumGlobe.value = new AppGlobe(CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID);
+        cesiumGlobe.value = new AppGlobe();
         mapPoints.value = new MapPoints(cesiumGlobe.value.viewer);
 
         pageViewStore.setPageViewEL();

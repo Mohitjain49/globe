@@ -6,7 +6,7 @@
         </div>
         <div class="globeApp-menu-header"> Search </div>
         <div class="globeApp-menu-top-iconContainer">
-            <font-awesome-icon icon="fa-map-location-dot" style="cursor: default;" />
+            <font-awesome-icon icon="fa-magnifying-glass" style="cursor: default;" />
         </div>
     </div>
 
