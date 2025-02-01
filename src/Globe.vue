@@ -1,17 +1,12 @@
 <script setup>
 import GlobeAppBar from './components/GlobeAppBar.vue';
-import GlobePoints from './components/GlobePoints.vue';
-
-import GlobeRCM from './components/GlobeRCM.vue';
-import GlobeHover from './components/GlobeHover.vue';
-
 import SearchMenu from './menus/SearchMenu.vue';
+import IncompleteMenu from './menus/IncompleteMenu.vue';
 
 import { useGlobeStore, CESIUM_GLOBE_ID } from './store/GlobeStore.js';
 import { onMounted, onUnmounted } from 'vue';
 
 import './styles/globestyle.css';
-import "./styles/globemenus.css";
 
 const globeStore = useGlobeStore();
 
@@ -26,14 +21,12 @@ onUnmounted(() => {
 
 <template>
 <div :id="CESIUM_GLOBE_ID"></div>
-
 <GlobeAppBar />
-<Transition name="globeMenuTransition" appear fade>
-    <GlobePoints v-if="globeStore.featureIndex == 2" />
+
+<Transition name="globeApp-menu-transition" appear fade>
+    <SearchMenu v-if="globeStore.menuOpen == 0" />
 </Transition>
-
-<GlobeRCM v-if="globeStore.globeRCMHandler.rcmOpen == 0" />
-<GlobeHover v-if="globeStore.hoverPointHandler.title !== ''" />
-
-<SearchMenu v-if="globeStore.menuOpen == 0" />
+<Transition name="globeApp-menu-transition" appear fade>
+    <IncompleteMenu v-if="(globeStore.menuOpen > 0 && globeStore.menuOpen < 3)" />
+</Transition>
 </template>
