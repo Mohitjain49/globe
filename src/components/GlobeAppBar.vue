@@ -1,34 +1,32 @@
 <template>
 <div class="globe-appBar">
-    <div class="globe-appBar-side" style="justify-content: flex-start;">
-        <a :href="MAIN_WEBSITE" class="globe-appBar-icon" :title="HOME_ICON_TITLE">
-            <font-awesome-icon icon="fa-house" />
-        </a>
-        <RouterLink to="/resume" class="globe-appBar-icon" :title="RESUME_ICON_TITLE">
-            <font-awesome-icon icon="fa-file-lines" />
-        </RouterLink>
-    </div>
-    <div class="globe-appBar-center center-flex-display">
+    <div class="globe-appBar-top center-flex-display">
         <div :class="getMainOptClass()" :title="SEARCH_ICON_TITLE" @click="globeStore.setMenuOpen(0)">
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
         </div>
-        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
+        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(3)">
             <font-awesome-icon icon="fa-display" />
             <span>Hobbies</span>
         </div>
-        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(2)">
+        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(4)">
             <font-awesome-icon icon="fa-laptop-code" />
             <span>Career</span>
         </div>
     </div>
-    <div class="globe-appBar-side" style="justify-content: flex-end;">
-        <div class="globe-appBar-icon" :title="SETTINGS_ICON_TITLE">
+    <div class="globe-appBar-bottom" style="justify-content: flex-end;">
+        <div :class="getMainOptClass()" :title="SETTINGS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
             <font-awesome-icon icon="fa-gear" />
+            <span>Setting</span>
         </div>
-        <div class="globe-appBar-icon">
+        <div :class="getMainOptClass()" @click="globeStore.setMenuOpen(2)" :title="TIME_ICON_TITLE">
             <font-awesome-icon icon="fa-clock" />
+            <span>Time</span>
         </div>
+        <RouterLink to="/resume" :class="getMainOptClass()" :title="RESUME_ICON_TITLE">
+            <font-awesome-icon icon="fa-file-lines" />
+            <span>Resume</span>
+        </RouterLink>
         <div v-if="!checkMobileMode()" class="globe-appBar-icon"
             :title="screenStore.elementTitle"
             @click="screenStore.setFullScreen()">
@@ -42,11 +40,10 @@
 <script setup>
 import { MAIN_WEBSITE } from '../routes.js';
 import { useGlobeStore } from '../store/GlobeStore.js';
-import { usePageViewStore, useDateStore, useScreenStore } from '../store/ExtraStores.js';
+import { usePageViewStore, useScreenStore } from '../store/ExtraStores.js';
 
 const globeStore = useGlobeStore();
 const pageViewStore = usePageViewStore();
-// const dateStore = useDateStore();
 const screenStore = useScreenStore();
 
 /**
@@ -69,6 +66,7 @@ const SEARCH_ICON_TITLE = "Search Locations";
 const INTERESTS_ICON_TITLE = "My Hobbies";
 const WORK_ICON_TITLE = "My Career";
 const SETTINGS_ICON_TITLE = "Settings";
+const TIME_ICON_TITLE = "View Time";
 </script>
 
 <style scoped>
@@ -86,18 +84,19 @@ const SETTINGS_ICON_TITLE = "Settings";
     flex-direction: column;
     border-right: 1px solid var(--blue-five);
 }
-.globe-appBar-side {
-    height: 135px; /* This is the width of the "longer" side. */
+.globe-appBar-bottom {
+    height: fit-content;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.globe-appBar-center {
+.globe-appBar-top {
     height: fit-content;
     width: 100%;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
 .globe-appBar-icon {

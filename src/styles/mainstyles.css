@@ -76,19 +76,12 @@ h1, h2, h3, p {
 .webpage-cover {
     margin: 0;
     padding: 0;
-    position: absolute;
-    height:auto;
-    min-height: 100%;
+    position: fixed;
+    height: 100%;
     width: 100%;
     min-width: 350px;
     top: 0;
     left: 0;
     z-index: 5000;
     background-color: rgba(0, 0, 0, 0.75);
-}
-
-@media (max-width: 350px) {
-    body {
-        overflow-x: auto !important;
-    }
 }

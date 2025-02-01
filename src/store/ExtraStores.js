@@ -100,8 +100,8 @@ export const useDateStore = defineStore("DateStore", () => {
         dateInterval = null;
     }
 
-    return { dateObj, dateStrings, setDateObj,
-        startDateInterval, stopDateInterval
+    return { dateObj, dateStrings,
+        setDateObj, startDateInterval, stopDateInterval
     }
 });
 

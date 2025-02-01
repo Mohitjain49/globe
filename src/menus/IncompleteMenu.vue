@@ -26,9 +26,10 @@ const globeStore = useGlobeStore();
 
 const INCOMPLETE_MENUS = [
     { name: "Search", icon: "fa-magnifying-glass" },
+    { name: "Settings", icon: "fa-gear" },
+    { name: "Time", icon: "fa-clock" },
     { name: "My Hobbies", icon: "fa-display" },
     { name: "My Career", icon: "fa-laptop-code" },
-    { name: "Settings", icon: "fa-gear" },
 ];
 
 const MESSAGE = "This page is currently in development.";

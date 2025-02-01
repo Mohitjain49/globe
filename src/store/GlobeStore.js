@@ -1,6 +1,6 @@
 import orange_location_dot from "../assets/location-dots/Orange_Location_Dot.svg";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, nextTick } from "vue";
 
 import { usePageViewStore, useDateStore, useScreenStore } from "./ExtraStores.js";
 import AppGlobe from "./AppGlobe.js";
@@ -15,7 +15,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
     const screenStore = useScreenStore();
 
     const globePresent = ref(false);
-    const menuOpen = ref(0);
+    const menuOpen = ref(-1);
 
     /**
      * @type {import('vue').Ref<AppGlobe>} This is the Cesium Globe that is used within the webpage.
@@ -28,11 +28,14 @@ export const useGlobeStore = defineStore("globe-store", () => {
     function mountGlobeStore() {
         if(globePresent.value) { return; }
         globePresent.value = true;
-        document.body.style.overflowX = "hidden";
 
+        document.title = "Mohit Jain | My Globe";
         cesiumGlobe.value = new AppGlobe();
+        
         menuOpen.value = ((window.innerWidth > 600) ? 0 : -1);
-        if(menuOpen.value == 0) { cesiumGlobe.value.setGeocoder(); }
+        nextTick().then(() => {
+            if(menuOpen.value == 0) { cesiumGlobe.value.setGeocoder(); }
+        })
 
         pageViewStore.setPageViewEL();
         dateStore.startDateInterval();
@@ -46,10 +49,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
     function unmountGlobeStore() {
         if(!globePresent.value) { return; }
         globePresent.value = false;
-        document.body.style.overflowX = "auto";
-        
-        closeRCM();
-        setFeatureIndex();
+        setMenuOpen(-1);
 
         pageViewStore.removePageViewEL();
         dateStore.stopDateInterval();
