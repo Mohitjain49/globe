@@ -4,7 +4,7 @@
         <div class="globeApp-menu-top-iconContainer">
             <font-awesome-icon icon="fa-xmark-circle"
                 @click="globeStore.setMenuOpen(-1)"
-                title="Click To Close Search Menu"
+                title="Click To Close Time Menu"
             />
         </div>
         <div class="globeApp-menu-header"> Time </div>

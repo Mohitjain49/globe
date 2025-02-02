@@ -17,16 +17,12 @@
     <div class="globe-appBar-bottom" style="justify-content: flex-end;">
         <div :class="getMainOptClass()" :title="SETTINGS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
             <font-awesome-icon icon="fa-gear" />
-            <span>Setting</span>
+            <span>Settings</span>
         </div>
         <div :class="getMainOptClass()" @click="globeStore.setMenuOpen(2)" :title="TIME_ICON_TITLE">
             <font-awesome-icon icon="fa-clock" />
             <span>Time</span>
         </div>
-        <RouterLink to="/resume" :class="getMainOptClass()" :title="RESUME_ICON_TITLE">
-            <font-awesome-icon icon="fa-file-lines" />
-            <span>Resume</span>
-        </RouterLink>
         <div v-if="!checkMobileMode()" class="globe-appBar-icon"
             :title="screenStore.elementTitle"
             @click="screenStore.setFullScreen()">
@@ -38,7 +34,6 @@
 </template>
 
 <script setup>
-import { MAIN_WEBSITE } from '../routes.js';
 import { useGlobeStore } from '../store/GlobeStore.js';
 import { usePageViewStore, useScreenStore } from '../store/ExtraStores.js';
 
@@ -60,8 +55,6 @@ function checkMobileMode() {
     return (pageViewStore.pageView == 1);
 }
 
-const HOME_ICON_TITLE = ("Back To Main Website (" + MAIN_WEBSITE + ")");
-const RESUME_ICON_TITLE = "View My Resume";
 const SEARCH_ICON_TITLE = "Search Locations";
 const INTERESTS_ICON_TITLE = "My Hobbies";
 const WORK_ICON_TITLE = "My Career";

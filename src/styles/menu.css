@@ -57,9 +57,46 @@
     color: var(--blue-five);
 }
 
+.globeApp-menu-line {
+    height: 2px;
+    width: 100%;
+    background-color: var(--blue-three);
+}
+
+.globeApp-menu-button {
+    cursor: pointer;
+    width: 100%;
+    height: fit-content;
+    padding: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: var(--default-transition);
+    color: var(--blue-five);
+}
+.globeApp-menu-button:hover {
+    background-color: var(--blue-one);
+    color: black;
+}
+
+.globeApp-menu-button svg {
+    margin-left: 10px;
+    width: 22px;
+    font-size: 20px;
+}
+.globeApp-menu-button img {
+    margin-left: 10px;
+    width: 22px;
+}
+.globeApp-menu-button span {
+    margin-left: 12px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
 @media (max-width: 600px) {
     .globeApp-menu {
-        width: calc(100% - 54px);
+        width: calc(100% - 57px);
         border-radius: 0px;
         border-right: none;
     }

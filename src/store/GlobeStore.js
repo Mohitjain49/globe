@@ -1,4 +1,3 @@
-import orange_location_dot from "../assets/location-dots/Orange_Location_Dot.svg";
 import { defineStore } from "pinia";
 import { ref, nextTick } from "vue";
 
@@ -118,4 +117,4 @@ export const useGlobeStore = defineStore("globe-store", () => {
     return { cesiumGlobe, globePresent, menuOpen,
         mountGlobeStore, unmountGlobeStore, setMenuOpen
     }
-})
+});

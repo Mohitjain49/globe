@@ -1,6 +1,22 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
+import { MAIN_WEBSITE } from "../routes.js";
+
+/**
+ * This function navigates visitors to my main website.
+ */
+export function goToMainWebsite() {
+    window.open(MAIN_WEBSITE, "mohit-website");
+}
+
+/**
+ * This function reloads the current page.
+ */
+export function reloadPage() {
+    window.location.reload();
+}
+
 /**
  * This class manages the page view of the app.
  * It toggles between at least laptop and mobile mode.
