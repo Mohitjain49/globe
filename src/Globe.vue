@@ -1,40 +1,37 @@
 <script setup>
 import GlobeAppBar from './components/GlobeAppBar.vue';
-// import GlobeBar from './components/GlobeBar.vue';
-import GlobePoints from './components/GlobePoints.vue';
+import SearchMenu from './menus/SearchMenu.vue';
+import SettingsMenu from './menus/SettingsMenu.vue';
+// import TimeMenu from './menus/TimeMenu.vue'; ** TO BE ADDED AT A LATER DATE.
+import IncompleteMenu from './menus/IncompleteMenu.vue';
 
-import GlobeRCM from './components/GlobeRCM.vue';
-import GlobeHover from './components/GlobeHover.vue';
-
-import { useGlobeStore, CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID } from './store/GlobeStore.js';
+import { useGlobeStore, CESIUM_GLOBE_ID } from './store/GlobeStore.js';
 import { onMounted, onUnmounted } from 'vue';
-
 import './styles/globestyle.css';
-import "./styles/globemenus.css";
 
 const globeStore = useGlobeStore();
-onMounted(() => {
-    document.title = "Mohit Jain | My Globe";
-    globeStore.mountGlobeStore();
-})
-onUnmounted(() => {
-    globeStore.unmountGlobeStore();
-})
+onMounted(() => { globeStore.mountGlobeStore(); });
+onUnmounted(() => { globeStore.unmountGlobeStore(); });
 </script>
 
 <template>
-<div :id="CESIUM_GLOBE_ID">
-    <div :id="CESIUM_GEOCODER_ID" :style="globeStore.geocoderDisplay"
-        @click="globeStore.closeRCM"
-        @contextmenu="globeStore.closeRCM">
-    </div>
-</div>
-
+<div :id="CESIUM_GLOBE_ID"></div>
 <GlobeAppBar />
-<Transition name="globeMenuTransition" appear fade>
-    <GlobePoints v-if="globeStore.featureIndex == 2" />
+
+<Transition name="globeApp-menu-transition" appear fade>
+    <SearchMenu v-if="globeStore.menuOpen == 0" />
+</Transition>
+<Transition name="globeApp-menu-transition" appear fade>
+    <SettingsMenu v-if="globeStore.menuOpen == 1" />
 </Transition>
 
-<GlobeRCM v-if="globeStore.globeRCMHandler.rcmOpen == 0" />
-<GlobeHover v-if="globeStore.hoverPointHandler.title !== ''" />
+<!-- TO BE ADDED AT A LATER DATE.
+<Transition name="globeApp-menu-transition" appear fade>
+    <TimeMenu v-if="globeStore.menuOpen == 2" />
+</Transition>
+-->
+
+<Transition name="globeApp-menu-transition" appear fade>
+    <IncompleteMenu v-if="(globeStore.menuOpen > 1)" />
+</Transition>
 </template>

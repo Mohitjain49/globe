@@ -5,10 +5,17 @@
     --blue-four: rgb(82, 139, 252);
     --blue-five: rgb(82, 3, 239);
 
+    --blue-one-translucent: rgb(159, 191, 255, 0.5);
+
     --gold-color: rgb(126, 90, 0);
     --gold-light: rgb(198, 147, 19);
     --orange-color: rgb(255, 115, 0);
     --orange-light: rgb(248, 206, 171);
+
+    --silver-color: #adadad;
+    --silver-light: #e4e2e2;
+
+    --pink-one: rgb(241, 144, 233);
 
     --empty-border: 2px solid rgba(0, 0, 0, 0);
     --thin-empty-border: 1px solid rgba(0, 0, 0, 0);
@@ -44,16 +51,6 @@ h1, h2, h3, p {
     font-family: 'Trebuchet MS', 'Calibri', sans-serif;
     color: var(--website-text);
 }
-
-.personal-web-body {
-    position: absolute;
-    top: 50px;
-    height: auto;
-    min-height: calc(100% - 50px);
-    width: 100%;
-    min-width: 340px;
-    background: var(--webpage-background);
-}
 .center-flex-display {
     display: flex;
     justify-content: center;
@@ -79,9 +76,8 @@ h1, h2, h3, p {
 .webpage-cover {
     margin: 0;
     padding: 0;
-    position: absolute;
-    height:auto;
-    min-height: 100%;
+    position: fixed;
+    height: 100%;
     width: 100%;
     min-width: 350px;
     top: 0;

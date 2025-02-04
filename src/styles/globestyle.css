@@ -1,41 +1,47 @@
 #mohit-website-globe {
     position: absolute;
     height: 100%;
-    width: 100%;
-    top: 0%;
-    right: 0%;
+    width: calc(100% - 55px);
+    min-width: 295px;
+    top: 0px;
+    left: 55px;
 }
-
 #mohit-website-geocoder {
-    position: absolute;
+    position: relative;
     top: 10px;
-    z-index: 10;
     width: 100%;
     text-align: center;
+    font-family: 'Lexend', sans-serif;
 }
 
 .cesium-geocoder-input {
-    width: 70%;
-    min-width: 325px;
+    width: 85%;
     text-align: center;
-    background: var(--nav-bar-background);
+    background-color: var(--blue-one-translucent);
     padding: 10px;
-    border: 2px solid var(--nav-bar-border);
+    border: 2px solid var(--blue-three);
     border-radius: 10px;
-    color: var(--website-text);
+    color: var(--blue-five);
     font-weight: bold;
     letter-spacing: 1px;
     font-size: 14px;
-    transition: border 0.2s, padding 0.2s;
+    transition: var(--default-transition), padding 0.2s;
     outline: none;
+    font-family: inherit;
 }
 .cesium-geocoder-input:hover {
-    border-color: var(--website-text);
-    padding: 15px;
+    background-color: var(--blue-one);
+    border-color: var(--blue-five);
+    padding: 12px !important;
+}
+.cesium-geocoder-input:focus {
+    background-color: var(--blue-one);
+    border-color: var(--blue-five);
 }
 
 #mohit-website-geocoder ul {
     width: 100%;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,28 +49,27 @@
     padding: 0;
     margin: 10px 0px;
 }
-
 #mohit-website-geocoder li {
     position: relative;
-    color: white;
-    width: 60%;
-    min-width: 300px;
+    color: var(--blue-five);
+    width: 85%;
     list-style-type: none;
     font-size: 14px;
-    font-family: sans-serif;
+    font-family: inherit;
     cursor: pointer;
-    border: 2px solid var(--nav-bar-border);
+    border: 2px solid var(--blue-three);
     letter-spacing: 1px;
-    background: var(--nav-bar-background);
+    background: var(--blue-one-translucent);
     margin-top: 10px;
     padding-top: 7.5px;
     padding-bottom: 7.5px;
     border-radius: 10px;
-    transition: border 0.2s, padding 0.2s;
+    transition: var(--default-transition), padding 0.2s;
 }
 #mohit-website-geocoder li:hover {
-    border: 2px solid var(--website-text);
-    padding: 15px;
+    background-color: var(--blue-one);
+    border: 2px solid var(--blue-five);
+    padding: 12px;
 }
 
 .cesium-geocoder-searchButton {
@@ -78,8 +83,19 @@
     position: relative;
     width: 100%;
 }
-
 .cesium-geocoder-input::placeholder {
-    color: var(--website-text);
+    color: var(--blue-five);
     font-weight: 500;
+}
+
+.globeApp-menu-transition-enter-active, .globeApp-menu-transition-leave-active {
+    transition: left 0.5s, opacity 0.5s;
+}
+.globeApp-menu-transition-enter-from, .globeApp-menu-transition-leave-to {
+    opacity: 0;
+    left: -345px;
+}
+.globeApp-menu-transition-enter-to, .globeApp-menu-transition-leave-from {
+    opacity: 1;
+    left: 55px;
 }
