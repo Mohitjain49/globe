@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import resume from "../assets/documents/Mohit_Jain_Resume.pdf";
+import resume from "/Mohit_Jain_Resume.pdf";
 import { MAIN_WEBSITE } from "../routes.js";
 import { onMounted, onUnmounted } from "vue";
 
