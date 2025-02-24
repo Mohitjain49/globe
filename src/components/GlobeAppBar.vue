@@ -15,9 +15,9 @@
         </div>
     </div>
     <div class="globe-appBar-bottom" style="justify-content: flex-end;">
-        <div :class="getMainOptClass()" :title="SETTINGS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
-            <font-awesome-icon icon="fa-gear" />
-            <span>Settings</span>
+        <div :class="getMainOptClass()" :title="OPTIONS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
+            <font-awesome-icon icon="fa-ellipsis-vertical" />
+            <span>Options</span>
         </div>
         <div :class="getMainOptClass()" @click="globeStore.setMenuOpen(2)" :title="TIME_ICON_TITLE">
             <font-awesome-icon icon="fa-clock" />
@@ -58,7 +58,7 @@ function checkMobileMode() {
 const SEARCH_ICON_TITLE = "Search Locations";
 const INTERESTS_ICON_TITLE = "My Hobbies";
 const WORK_ICON_TITLE = "My Career";
-const SETTINGS_ICON_TITLE = "Settings";
+const OPTIONS_ICON_TITLE = "Options";
 const TIME_ICON_TITLE = "View Time";
 </script>
 
@@ -69,7 +69,7 @@ const TIME_ICON_TITLE = "View Time";
     left: 0;
     height: 100%;
     width: 54px;
-    background: linear-gradient(to top, var(--blue-one) 0%, var(--blue-two) 100%);
+    background: var(--blue-zero);
     z-index: 5;
     display: flex;
     justify-content: space-between;
@@ -101,7 +101,7 @@ const TIME_ICON_TITLE = "View Time";
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
     font-size: 24px;
     transition: var(--default-transition);
 }
@@ -118,17 +118,5 @@ const TIME_ICON_TITLE = "View Time";
     font-size: 11px;
     font-family: 'Lexend', sans-serif;
     font-weight: bold;
-}
-
-.globe-appBar-time {
-    width: 85px;
-    flex-direction: column;
-    font-family: 'Lexend', sans-serif;
-    font-weight: bold;
-    color:var(--blue-five);
-    font-size: 14px;
-}
-.globe-appBar-time span {
-    display: block !important;
 }
 </style>

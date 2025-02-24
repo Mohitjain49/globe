@@ -7,9 +7,9 @@
                 title="Click To Close Settings Menu"
             />
         </div>
-        <div class="globeApp-menu-header"> Settings </div>
+        <div class="globeApp-menu-header"> Options </div>
         <div class="globeApp-menu-top-iconContainer">
-            <font-awesome-icon icon="fa-gear" style="cursor: default;" />
+            <font-awesome-icon icon="fa-ellipsis-vertical" style="cursor: default;" />
         </div>
     </div>
 
@@ -60,9 +60,9 @@
 
 <script setup>
 import "../styles/menu.css";
-import blue_github from "../assets/brands/blue-five/fa_github_icon.svg";
+import blue_github from "../assets/brands/blue-cobalt/fa_github_icon.svg";
 import black_github from "../assets/brands/black/fa_github_icon.svg";
-import blue_linkedin from "../assets/brands/blue-five/fa_linkedin_icon.svg";
+import blue_linkedin from "../assets/brands/blue-cobalt/fa_linkedin_icon.svg";
 import black_linkedin from "../assets/brands/black/fa_linkedin_icon.svg";
 
 import { useScreenStore, reloadPage, goToMainWebsite } from "../store/ExtraStores.js";

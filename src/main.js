@@ -27,7 +27,8 @@ library.add(
     FaIcons.faGlobe,
     FaIcons.faFileLines,
     FaIcons.faRotateRight,
-    FaIcons.faEnvelope
+    FaIcons.faEnvelope,
+    FaIcons.faEllipsisVertical
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).

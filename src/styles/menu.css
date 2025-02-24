@@ -1,11 +1,11 @@
 .globeApp-menu {
     position: absolute;
     left: 54px;
-    height: calc(100% - 0px);
+    height: 100%;
     width: 400px;
-    background: var(--pink-one);
-    border-left: 3px solid var(--blue-five);
-    border-right: 2px solid var(--blue-five);
+    background: var(--globe-light-green);
+    border-left: 3px solid var(--blue-cobalt);
+    border-right: 2px solid var(--blue-cobalt);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     z-index: 4;
@@ -15,18 +15,18 @@
 .globeApp-menu-top {
     height: 43px;
     width: 100%;
-    border-bottom: 2px solid var(--blue-three);
+    border-bottom: 2px solid var(--blue-cobalt);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background: linear-gradient(to right, var(--blue-two) 0%, var(--blue-one) 15%, var(--blue-one) 85%, var(--blue-two) 100%);
+    background: linear-gradient(to right, var(--blue-one) 0%, var(--blue-zero) 15%, var(--blue-zero) 85%, var(--blue-one) 100%);
 }
 .globeApp-menu-header {
     font-family: 'Lexend', sans-serif;
     font-size: 25px;
     font-weight: bold;
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
 }
 
 .globeApp-menu-top-iconContainer {
@@ -38,7 +38,7 @@
 }
 .globeApp-menu-top-iconContainer svg {
     font-size: 22px;
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
     cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
     font-size: 28px;
     font-family: 'Lexend', sans-serif;
     text-align: center;
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
 }
 
 .globeApp-menu-line {
@@ -65,17 +65,19 @@
 
 .globeApp-menu-button {
     cursor: pointer;
-    width: 100%;
+    width: calc(100% - 3px);
     height: fit-content;
-    padding: 15px 0px;
+    padding: 12px 0px;
+    border: 2px solid rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: flex-start;
     transition: var(--default-transition);
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
 }
 .globeApp-menu-button:hover {
     background-color: var(--blue-one);
+    border-color: black;
     color: black;
 }
 
@@ -92,6 +94,7 @@
     margin-left: 12px;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 @media (max-width: 600px) {

@@ -55,7 +55,7 @@ const CONTACT_ICON_TITLE = "Contact Me!"
     left: 0px;
     width: 50px;
     height: 100%;
-    background: var(--blue-one);
+    background: var(--blue-zero);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,7 +76,7 @@ const CONTACT_ICON_TITLE = "Contact Me!"
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: var(--blue-five);
+    color: var(--blue-cobalt);
     transition: var(--default-transition);
 }
 .resume-sidebar-icon:hover {

@@ -26,7 +26,7 @@ const globeStore = useGlobeStore();
 
 const INCOMPLETE_MENUS = [
     { name: "Search", icon: "fa-magnifying-glass" },
-    { name: "Settings", icon: "fa-gear" },
+    { name: "Options", icon: "fa-ellipsis-vertical" },
     { name: "Time", icon: "fa-clock" },
     { name: "My Hobbies", icon: "fa-display" },
     { name: "My Career", icon: "fa-laptop-code" },

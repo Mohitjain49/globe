@@ -14,7 +14,7 @@
     </div>
 
     <div class="globeApp-menu-body">
-        <div :id="CESIUM_GEOCODER_ID"></div>
+        <div :id="CESIUM_GEOCODER_ID" @click="closeMenuOnNavigation"></div>
     </div>
 </div>
 </template>
@@ -26,18 +26,8 @@ import { onMounted, onBeforeUnmount } from "vue";
 
 const globeStore = useGlobeStore();
 
-onMounted(() => {
-    if(globeStore.globePresent) { globeStore.cesiumGlobe.setGeocoder(true); }
-    document.getElementById(CESIUM_GEOCODER_ID).addEventListener(
-        "click", (event) => { closeMenuOnNavigation(event); }
-    );
-});
-onBeforeUnmount(() => {
-    globeStore.cesiumGlobe.setGeocoder(false);
-    document.getElementById(CESIUM_GEOCODER_ID).removeEventListener(
-        "click", (event) => { closeMenuOnNavigation(event); }
-    );
-});
+onMounted(() => { if(globeStore.globePresent) { globeStore.cesiumGlobe.setGeocoder(true); } });
+onBeforeUnmount(() => { globeStore.cesiumGlobe.setGeocoder(false); });
 
 /**
  * This function closes the menu whenever the user navigates to a point.
