@@ -65,14 +65,13 @@ import black_github from "../assets/brands/black/fa_github_icon.svg";
 import blue_linkedin from "../assets/brands/blue-cobalt/fa_linkedin_icon.svg";
 import black_linkedin from "../assets/brands/black/fa_linkedin_icon.svg";
 
-import { useScreenStore, usePWAStore, reloadPage, goToMainWebsite } from "../store/ExtraStores.js";
+import { useScreenStore, reloadPage, goToMainWebsite } from "../store/ExtraStores.js";
 import { useGlobeStore } from "../store/GlobeStore.js";
 
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
 const screenStore = useScreenStore();
-const pwaStore = usePWAStore();
 const globeStore = useGlobeStore();
 const router = useRouter();
 
