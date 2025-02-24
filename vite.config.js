@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 
 import vue from "@vitejs/plugin-vue";
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const cesiumSource = "node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesiumStatic";
@@ -11,6 +12,10 @@ export default defineConfig({
   base: "/",
   plugins: [
     vue(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: { enabled: true }
+    }),
     viteStaticCopy({
       targets: [
         { src: `${cesiumSource}/ThirdParty`, dest: cesiumBaseUrl },
