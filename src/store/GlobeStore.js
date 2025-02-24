@@ -28,7 +28,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
         if(globePresent.value) { return; }
         globePresent.value = true;
 
-        document.title = "Mohit Jain | My Globe";
+        document.title = "Mohit Jain - My Globe";
         cesiumGlobe.value = new AppGlobe();
         
         menuOpen.value = ((window.innerWidth > 600) ? 0 : -1);

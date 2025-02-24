@@ -65,7 +65,7 @@
 
 .globeApp-menu-button {
     cursor: pointer;
-    width: calc(100% - 3px);
+    width: calc(100% - 4px);
     height: fit-content;
     padding: 12px 0px;
     border: 2px solid rgba(0, 0, 0, 0);

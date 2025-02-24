@@ -22,7 +22,7 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5000000
       },
       manifest: {
-        name: 'Mohit Jain | My Globe',
+        name: 'Mohit Jain - My Globe',
         short_name: 'MKJ Globe',
         start_url: '/',
         display: 'standalone',
