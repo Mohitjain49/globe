@@ -1,6 +1,6 @@
 {
   "name": "mohit-website-globe",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.5",
-    "vite-plugin-pwa": "^0.21.1",
     "vite-plugin-static-copy": "^2.2.0"
   }
 }

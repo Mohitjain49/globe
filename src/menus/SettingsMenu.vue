@@ -82,7 +82,7 @@ const hoverLinkedin = ref(false);
  * This function opens my email.
  */
 function openEmail() {
-    window.open("mailto:mohitkjainwork@gmail.com", "mohit-email-tab");
+    window.open("mailto:mohitkjain49@gmail.com", "mohit-email-tab");
 }
 
 /**
