@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, nextTick } from "vue";
 
-import { usePageViewStore, useDateStore, useScreenStore } from "./ExtraStores.js";
+import { usePageViewStore, useScreenStore } from "./ExtraStores.js";
 import AppGlobe from "./AppGlobe.js";
 import * as Cesium from 'cesium';
 
@@ -10,7 +10,6 @@ export const CESIUM_GEOCODER_ID = "mohit-website-geocoder";
 
 export const useGlobeStore = defineStore("globe-store", () => {
     const pageViewStore = usePageViewStore();
-    const dateStore = useDateStore();
     const screenStore = useScreenStore();
 
     const globePresent = ref(false);
@@ -37,7 +36,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
         })
 
         pageViewStore.setPageViewEL();
-        dateStore.startDateInterval();
         screenStore.setFullScreenEL();
         setGlobeELs();
     }

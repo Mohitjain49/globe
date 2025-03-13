@@ -5,11 +5,11 @@
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
         </div>
-        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(3)">
-            <font-awesome-icon icon="fa-display" />
+        <div :class="getMainOptClass()" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(2)">
+            <font-awesome-icon icon="fa-gamepad" />
             <span>Hobbies</span>
         </div>
-        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(4)">
+        <div :class="getMainOptClass()" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(3)">
             <font-awesome-icon icon="fa-laptop-code" />
             <span>Career</span>
         </div>
@@ -19,14 +19,7 @@
             <font-awesome-icon icon="fa-ellipsis-vertical" />
             <span>Options</span>
         </div>
-        <div :class="getMainOptClass()" @click="globeStore.setMenuOpen(2)" :title="TIME_ICON_TITLE">
-            <font-awesome-icon icon="fa-clock" />
-            <span>Time</span>
-        </div>
-        <div v-if="!checkMobileMode()" class="globe-appBar-icon"
-            :title="screenStore.elementTitle"
-            @click="screenStore.setFullScreen()">
-            
+        <div class="globe-appBar-icon" :title="screenStore.elementTitle" @click="screenStore.setFullScreen()">
             <font-awesome-icon :icon="screenStore.faIcon" />
         </div>
     </div>

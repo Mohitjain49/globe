@@ -3,7 +3,7 @@
     left: 54px;
     height: 100%;
     width: 400px;
-    background: var(--globe-light-green);
+    background: rgba(187, 210, 255, 0.95);
     border-left: 3px solid var(--blue-cobalt);
     border-right: 2px solid var(--blue-cobalt);
     border-top-right-radius: 10px;
@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background: linear-gradient(to right, var(--blue-one) 0%, var(--blue-zero) 15%, var(--blue-zero) 85%, var(--blue-one) 100%);
+    background: linear-gradient(to right, var(--blue-one) 0%, rgba(187, 210, 255, 0.95) 15%, rgba(187, 210, 255, 0.95) 85%, var(--blue-one) 100%);
 }
 .globeApp-menu-header {
     font-family: 'Lexend', sans-serif;

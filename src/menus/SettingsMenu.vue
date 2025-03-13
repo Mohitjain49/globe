@@ -101,9 +101,8 @@ function openLinkedinAccount() {
 
 const ACTIONS_ONE = ref([
     { name: "Search Locations", icon: "fa-magnifying-glass", func: () => { globeStore.setMenuOpen(0); } },
-    { name: "View Time", icon: "fa-clock", func: () => { globeStore.setMenuOpen(2); } },
-    { name: "My Hobbies", icon: "fa-display", func: () => { globeStore.setMenuOpen(3); } },
-    { name: "My Career", icon: "fa-laptop-code", func: () => { globeStore.setMenuOpen(4); } }
+    { name: "My Hobbies", icon: "fa-gamepad", func: () => { globeStore.setMenuOpen(2); } },
+    { name: "My Career", icon: "fa-laptop-code", func: () => { globeStore.setMenuOpen(3); } }
 ]);
 const ACTIONS_THREE = ref([
     { name: "View My Resume", icon: "fa-file-lines", func: () => { router.push("/resume"); } },

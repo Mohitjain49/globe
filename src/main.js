@@ -17,7 +17,7 @@ library.add(
     FaIcons.faHouse,
     FaIcons.faArrowLeft,
     FaIcons.faMapLocationDot,
-    FaIcons.faDisplay,
+    FaIcons.faGamepad,
     FaIcons.faLaptopCode,
     FaIcons.faExpand,
     FaIcons.faCompress,
