@@ -12,8 +12,7 @@ import * as FaIcons from '@fortawesome/free-solid-svg-icons';
 library.add(
     FaIcons.faMapPin,
     FaIcons.faMagnifyingGlass,
-    FaIcons.faX,
-    FaIcons.faCircleXmark,
+    FaIcons.faXmark,
     FaIcons.faHouse,
     FaIcons.faArrowLeft,
     FaIcons.faMapLocationDot,

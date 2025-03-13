@@ -1,15 +1,9 @@
 <template>
 <div class="globeApp-menu">
     <div class="globeApp-menu-top">
-        <div class="globeApp-menu-top-iconContainer">
-            <font-awesome-icon icon="fa-xmark-circle"
-                @click="globeStore.setMenuOpen(-1)"
-                title="Click To Close Menu"
-            />
-        </div>
         <div class="globeApp-menu-header"> {{ INCOMPLETE_MENUS[globeStore.menuOpen].name }} </div>
-        <div class="globeApp-menu-top-iconContainer">
-            <font-awesome-icon :icon="INCOMPLETE_MENUS[globeStore.menuOpen].icon" style="cursor: default;" />
+        <div class="globeApp-menu-top-iconContainer" @click="globeStore.setMenuOpen(-1)">
+            <font-awesome-icon icon="fa-xmark" title="Click To Close Menu" />
         </div>
     </div>
 
