@@ -1,12 +1,6 @@
 <template>
 <div class="globeApp-menu">
-    <div class="globeApp-menu-top">
-        <div class="globeApp-menu-header"> Search </div>
-        <div class="globeApp-menu-top-iconContainer" @click="globeStore.setMenuOpen(-1)">
-            <font-awesome-icon icon="fa-xmark" title="Click To Close Search Menu" />
-        </div>
-    </div>
-
+    <MenuHeader :title="'Search'" />
     <div class="globeApp-menu-body">
         <div :id="CESIUM_GEOCODER_ID" @click="closeMenuOnNavigation"></div>
     </div>
@@ -15,6 +9,8 @@
 
 <script setup>
 import "../styles/menu.css";
+import MenuHeader from "../components/MenuHeader.vue";
+
 import { useGlobeStore, CESIUM_GEOCODER_ID } from "../store/GlobeStore.js";
 import { onMounted, onBeforeUnmount } from "vue";
 

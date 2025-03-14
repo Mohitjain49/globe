@@ -49,7 +49,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
         setMenuOpen(-1);
 
         pageViewStore.removePageViewEL();
-        dateStore.stopDateInterval();
         screenStore.removeFullScreenEL();
 
         removeGlobeELs();
