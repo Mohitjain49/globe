@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import { ref, nextTick } from "vue";
 
 import { usePageViewStore, useScreenStore } from "./ExtraStores.js";
+import { POINTS } from "./Points.js";
+
 import AppGlobe from "./AppGlobe.js";
 import * as Cesium from 'cesium';
 
@@ -26,8 +28,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
     function mountGlobeStore() {
         if(globePresent.value) { return; }
         globePresent.value = true;
-
-        document.title = "Mohit Jain | My Globe";
         cesiumGlobe.value = new AppGlobe();
         
         menuOpen.value = ((window.innerWidth > 600) ? 0 : -1);
@@ -37,6 +37,8 @@ export const useGlobeStore = defineStore("globe-store", () => {
 
         pageViewStore.setPageViewEL();
         screenStore.setFullScreenEL();
+
+        initPoints();
         setGlobeELs();
     }
 
@@ -101,6 +103,20 @@ export const useGlobeStore = defineStore("globe-store", () => {
         eventHandler.removeInputAction(eventTypes.LEFT_CLICK);
         eventHandler.removeInputAction(eventTypes.RIGHT_CLICK);
         eventHandler.removeInputAction(eventTypes.LEFT_DOUBLE_CLICK);
+    }
+
+    /**
+     * This function initializes all points for the map.
+     */
+    function initPoints() {
+        let mapEntities = cesiumGlobe.value.viewer.entities;
+        for(let i = 0; i < POINTS.length; i++) {
+            const point = POINTS[i];
+            mapEntities.add({
+                position: cesiumGlobe.value.createPosition(point.lon, point.lat),
+                point: { pixelSize: 15, color: Cesium.Color.CRIMSON }
+            });
+        }
     }
 
     /**
