@@ -2,7 +2,7 @@
 import GlobeAppBar from './components/GlobeAppBar.vue';
 import SearchMenu from './menus/SearchMenu.vue';
 import SettingsMenu from './menus/SettingsMenu.vue';
-import IncompleteMenu from './menus/IncompleteMenu.vue';
+import CareerMenu from './menus/CareerMenu.vue';
 
 import { useGlobeStore, CESIUM_GLOBE_ID } from './store/GlobeStore.js';
 import { onMounted, onUnmounted } from 'vue';
@@ -23,8 +23,7 @@ onUnmounted(() => { globeStore.unmountGlobeStore(); });
 <Transition name="globeApp-menu-transition" appear fade>
     <SettingsMenu v-if="globeStore.menuOpen == 1" />
 </Transition>
-
 <Transition name="globeApp-menu-transition" appear fade>
-    <IncompleteMenu v-if="(globeStore.menuOpen > 1)" />
+    <CareerMenu v-if="globeStore.menuOpen == 2" />
 </Transition>
 </template>

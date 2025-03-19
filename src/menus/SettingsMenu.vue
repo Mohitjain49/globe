@@ -18,10 +18,7 @@
         </div>
         <div class="globeApp-menu-line"></div>
 
-        <a v-for="tab in PERSONAL_WEBSITE_TABS"
-            :href="tab.link" target="mohit-website"
-            class="globeApp-menu-button">
-
+        <a v-for="tab in PERSONAL_WEBSITE_TABS" :href="tab.link" class="globeApp-menu-button gold">
             <font-awesome-icon :icon="tab.icon" />
             <span> {{ tab.name }} </span>
         </a>
@@ -72,8 +69,7 @@ const hoverLinkedin = ref(false);
 
 const ACTIONS_ONE = ref([
     { name: "Search Locations", icon: "fa-magnifying-glass", func: () => { globeStore.setMenuOpen(0); } },
-    { name: "My Hobbies", icon: "fa-gamepad", func: () => { globeStore.setMenuOpen(2); } },
-    { name: "My Career", icon: "fa-laptop-code", func: () => { globeStore.setMenuOpen(3); } }
+    { name: "My Career", icon: "fa-laptop-code", func: () => { globeStore.setMenuOpen(2); } }
 ]);
 
 const PERSONAL_WEBSITE_TABS = ref([
