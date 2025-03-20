@@ -1,11 +1,21 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useRoute } from "vue-router";
 
 /**
  * This function reloads the current page.
  */
 export function reloadPage() {
     window.location.reload();
+}
+
+/**
+ * This returns the "blank" route if the visitor is already visiting that route.
+ * @param {String} btnRoute The route to navigate to upon clicking the button.
+ */
+export function getBtnRoute(btnRoute = "/") {
+    const route = useRoute();
+    return ((route.path === btnRoute) ? '/blank' : btnRoute);
 }
 
 /**

@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
-import { ref, nextTick } from "vue";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-import { usePageViewStore, useScreenStore } from "./ExtraStores.js";
+import { usePageViewStore, useScreenStore, getBtnRoute } from "./ExtraStores.js";
 import { POINTS } from "./Points.js";
 
 import AppGlobe from "./AppGlobe.js";
@@ -11,11 +12,9 @@ export const CESIUM_GLOBE_ID = "mohit-website-globe";
 export const CESIUM_GEOCODER_ID = "mohit-website-geocoder";
 
 export const useGlobeStore = defineStore("globe-store", () => {
+    const router = useRouter();
     const pageViewStore = usePageViewStore();
     const screenStore = useScreenStore();
-
-    const globePresent = ref(false);
-    const menuOpen = ref(-1);
 
     /**
      * @type {import('vue').Ref<AppGlobe>} This is the Cesium Globe that is used within the webpage.
@@ -23,20 +22,24 @@ export const useGlobeStore = defineStore("globe-store", () => {
     const cesiumGlobe = ref(null);
 
     /**
+     * This returns the "blank" route if the visitor is already visiting that route.
+     * @param {String} btnRoute The route to navigate to upon clicking the button.
+     */
+    function getNavBtnRoute(btnRoute = "/") {
+        return getBtnRoute(btnRoute);
+    }
+
+    /**
      * This mounts the globe store when used by the Globe Page.
      */
     function mountGlobeStore() {
-        if(globePresent.value) { return; }
-        globePresent.value = true;
         cesiumGlobe.value = new AppGlobe();
-        
-        menuOpen.value = ((window.innerWidth > 600) ? 0 : -1);
-        nextTick().then(() => {
-            if(menuOpen.value == 0) { cesiumGlobe.value.setGeocoder(); }
-        })
-
         pageViewStore.setPageViewEL();
         screenStore.setFullScreenEL();
+
+        if(window.innerWidth <= 600 && router.currentRoute.value.path === "/") {
+            router.replace("/blank")
+        }
 
         initPoints();
         setGlobeELs();
@@ -46,14 +49,8 @@ export const useGlobeStore = defineStore("globe-store", () => {
      * This unmounts the globe store when the user exits the Globe Page.
      */
     function unmountGlobeStore() {
-        if(!globePresent.value) { return; }
-        globePresent.value = false;
-        setMenuOpen(-1);
-
         pageViewStore.removePageViewEL();
         screenStore.removeFullScreenEL();
-
-        removeGlobeELs();
         cesiumGlobe.value.destroyMap();
     }
 
@@ -91,21 +88,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
     }
 
     /**
-     * This removes the event listeners for the map.
-     */
-    function removeGlobeELs() {
-        const eventHandler = cesiumGlobe.value.viewer.screenSpaceEventHandler;
-        const eventTypes = Cesium.ScreenSpaceEventType;
-
-        eventHandler.removeInputAction(eventTypes.LEFT_DOWN);
-        eventHandler.removeInputAction(eventTypes.MOUSE_MOVE);
-        eventHandler.removeInputAction(eventTypes.LEFT_UP);
-        eventHandler.removeInputAction(eventTypes.LEFT_CLICK);
-        eventHandler.removeInputAction(eventTypes.RIGHT_CLICK);
-        eventHandler.removeInputAction(eventTypes.LEFT_DOUBLE_CLICK);
-    }
-
-    /**
      * This function initializes all points for the map.
      */
     function initPoints() {
@@ -119,15 +101,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
         }
     }
 
-    /**
-     * This sets which menu should be opened. 
-     * @param {Number} index The index of the menu. Default value is -1.
-     */
-    function setMenuOpen(index = -1) {
-        menuOpen.value = ((menuOpen.value == index) ? -1 : index);
-    }
-
-    return { cesiumGlobe, globePresent, menuOpen,
-        mountGlobeStore, unmountGlobeStore, setMenuOpen
+    return { cesiumGlobe,
+        mountGlobeStore, unmountGlobeStore, getNavBtnRoute
     }
 });

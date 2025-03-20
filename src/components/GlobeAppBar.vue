@@ -1,20 +1,20 @@
 <template>
 <div class="globe-appBar">
     <div class="globe-appBar-top">
-        <div class="globe-appBar-icon" :title="SEARCH_ICON_TITLE" @click="globeStore.setMenuOpen(0)">
+        <RouterLink :to="getBtnRoute('/')" class="globe-appBar-icon" :title="SEARCH_ICON_TITLE">
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
-        </div>
-        <div class="globe-appBar-icon" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(2)">
+        </RouterLink>
+        <RouterLink :to="getBtnRoute('/career')" class="globe-appBar-icon" :title="WORK_ICON_TITLE">
             <font-awesome-icon icon="fa-laptop-code" />
             <span>Career</span>
-        </div>
+        </RouterLink>
     </div>
     <div class="globe-appBar-bottom">
-        <div class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
+        <RouterLink :to="getBtnRoute('/options')" class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE">
             <font-awesome-icon icon="fa-ellipsis-vertical" />
             <span>Options</span>
-        </div>
+        </RouterLink>
         <a :href="MAIN_WEBSITE" class="globe-appBar-icon gold" :title="HOME_ICON_TITLE">
             <font-awesome-icon icon="fa-house" style="margin-top: 3px;" />
             <span>Home</span>
@@ -27,13 +27,10 @@
 </template>
 
 <script setup>
-import { useGlobeStore } from '../store/GlobeStore.js';
-import { useScreenStore } from '../store/ExtraStores.js';
 import { MAIN_WEBSITE } from '../routes.js';
+import { useScreenStore, getBtnRoute } from '../store/ExtraStores.js';
 
-const globeStore = useGlobeStore();
 const screenStore = useScreenStore();
-
 const SEARCH_ICON_TITLE = "Search Locations";
 const WORK_ICON_TITLE = "My Career";
 const OPTIONS_ICON_TITLE = "Options";
