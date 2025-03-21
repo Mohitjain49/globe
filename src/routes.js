@@ -2,8 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import SearchMenu from "./menus/SearchMenu.vue";
 import OptionsMenu from "./menus/OptionsMenu.vue";
-import CareerMenu from "./menus/CareerMenu.vue";
 import NoMenu from "./menus/NoMenu.vue";
+
+import CareerMenu from "./menus/career/CareerMenu.vue";
+import IvueMenu from "./menus/career/IvueMenu.vue";
+import KennesawMenu from "./menus/career/KennesawMenu.vue";
+import SubloMenu from "./menus/career/SubloMenu.vue";
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]} These are the views that control the menus for my globe page.
@@ -11,11 +15,17 @@ import NoMenu from "./menus/NoMenu.vue";
 export const globeViews = [
     { path: "/", component: SearchMenu },
     { path: "/options", component: OptionsMenu },
-    { path: "/career", component: CareerMenu },
 
     { path: "/blank", component: NoMenu },
     { path: "/search", redirect: "/" },
     { path: '/:catchAll(.*)', redirect: "/" },
+
+    { path: "/career", children: [
+        { path: "", component: CareerMenu },
+        { path: "ivue", component: IvueMenu },
+        { path: "ksu", component: KennesawMenu },
+        { path: "sublo", component: SubloMenu },
+    ]},
 ]
 
 const globeRouter = createRouter({

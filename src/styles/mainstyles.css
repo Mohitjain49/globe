@@ -9,8 +9,6 @@
     --blue-four: rgb(82, 139, 252);
     --blue-five: rgb(82, 3, 239);
 
-    --blue-one-translucent: rgb(159, 191, 255, 0.5);
-
     --gold-color: rgb(126, 90, 0);
     --gold-light: rgb(198, 147, 19);
     --orange-color: rgb(255, 115, 0);
@@ -20,6 +18,8 @@
     --silver-light: #e4e2e2;
     --globe-green: #4fc20c;
     --globe-light-green: #8cf94e;
+
+    --ksu-yellow: #ffc629;
 
     --empty-border: 2px solid rgba(0, 0, 0, 0);
     --thin-empty-border: 1px solid rgba(0, 0, 0, 0);
