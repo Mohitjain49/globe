@@ -1,9 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 
+import { useRouter } from "vue-router";
 import { usePageViewStore, useScreenStore, getBtnRoute } from "./ExtraStores.js";
-import { POINTS } from "./Points.js";
 
 import AppGlobe from "./AppGlobe.js";
 import * as Cesium from 'cesium';
@@ -40,8 +39,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
         if(window.innerWidth <= 600 && router.currentRoute.value.path === "/") {
             router.replace("/blank")
         }
-
-        initPoints();
         setGlobeELs();
     }
 
@@ -85,20 +82,6 @@ export const useGlobeStore = defineStore("globe-store", () => {
             (event) => {},
             eventTypes.LEFT_DOUBLE_CLICK
         );
-    }
-
-    /**
-     * This function initializes all points for the map.
-     */
-    function initPoints() {
-        let mapEntities = cesiumGlobe.value.viewer.entities;
-        for(let i = 0; i < POINTS.length; i++) {
-            const point = POINTS[i];
-            mapEntities.add({
-                position: cesiumGlobe.value.createPosition(point.lon, point.lat),
-                point: { pixelSize: 15, color: Cesium.Color.CRIMSON }
-            });
-        }
     }
 
     return { cesiumGlobe,

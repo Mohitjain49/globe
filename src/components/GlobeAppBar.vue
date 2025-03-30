@@ -5,10 +5,6 @@
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
         </RouterLink>
-        <RouterLink :to="getBtnRoute('/career')" class="globe-appBar-icon" :title="WORK_ICON_TITLE">
-            <font-awesome-icon icon="fa-laptop-code" />
-            <span>Career</span>
-        </RouterLink>
     </div>
     <div class="globe-appBar-bottom">
         <RouterLink :to="getBtnRoute('/options')" class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE">
@@ -32,7 +28,6 @@ import { useScreenStore, getBtnRoute } from '../store/ExtraStores.js';
 
 const screenStore = useScreenStore();
 const SEARCH_ICON_TITLE = "Search Locations";
-const WORK_ICON_TITLE = "My Career";
 const OPTIONS_ICON_TITLE = "Options";
 const HOME_ICON_TITLE = "My Main Website";
 </script>
