@@ -1,24 +1,20 @@
 <template>
 <div class="globe-appBar">
-    <div class="globe-appBar-top center-flex-display">
-        <div class="globe-appBar-icon" :title="SEARCH_ICON_TITLE" @click="globeStore.setMenuOpen(0)">
+    <div class="globe-appBar-top">
+        <RouterLink :to="getBtnRoute('/')" class="globe-appBar-icon" :title="SEARCH_ICON_TITLE">
             <font-awesome-icon icon="fa-magnifying-glass" />
             <span>Search</span>
-        </div>
-        <div class="globe-appBar-icon" :title="INTERESTS_ICON_TITLE" @click="globeStore.setMenuOpen(2)">
-            <font-awesome-icon icon="fa-gamepad" />
-            <span>Hobbies</span>
-        </div>
-        <div class="globe-appBar-icon" :title="WORK_ICON_TITLE" @click="globeStore.setMenuOpen(3)">
-            <font-awesome-icon icon="fa-laptop-code" />
-            <span>Career</span>
-        </div>
+        </RouterLink>
     </div>
-    <div class="globe-appBar-bottom" style="justify-content: flex-end;">
-        <div class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE" @click="globeStore.setMenuOpen(1)">
+    <div class="globe-appBar-bottom">
+        <RouterLink :to="getBtnRoute('/options')" class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE">
             <font-awesome-icon icon="fa-ellipsis-vertical" />
             <span>Options</span>
-        </div>
+        </RouterLink>
+        <a :href="MAIN_WEBSITE" class="globe-appBar-icon gold" :title="HOME_ICON_TITLE">
+            <font-awesome-icon icon="fa-house" style="margin-top: 3px;" />
+            <span>Home</span>
+        </a>
         <div class="globe-appBar-icon screen" :title="screenStore.elementTitle" @click="screenStore.setFullScreen()">
             <font-awesome-icon :icon="screenStore.faIcon" />
         </div>
@@ -27,16 +23,13 @@
 </template>
 
 <script setup>
-import { useGlobeStore } from '../store/GlobeStore.js';
-import { useScreenStore } from '../store/ExtraStores.js';
+import { MAIN_WEBSITE } from '../routes.js';
+import { useScreenStore, getBtnRoute } from '../store/ExtraStores.js';
 
-const globeStore = useGlobeStore();
 const screenStore = useScreenStore();
-
 const SEARCH_ICON_TITLE = "Search Locations";
-const INTERESTS_ICON_TITLE = "My Hobbies";
-const WORK_ICON_TITLE = "My Career";
 const OPTIONS_ICON_TITLE = "Options";
+const HOME_ICON_TITLE = "My Main Website";
 </script>
 
 <style scoped>
@@ -59,11 +52,14 @@ const OPTIONS_ICON_TITLE = "Options";
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex-direction: column;
 }
 .globe-appBar-top {
     height: fit-content;
     width: 100%;
+    display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -86,6 +82,14 @@ const OPTIONS_ICON_TITLE = "Options";
     background-color: var(--blue-three);
     color: black;
     border-color: black;
+}
+
+.globe-appBar-icon.gold {
+    color: var(--gold-color);
+}
+.globe-appBar-icon.gold:hover {
+    background-color: var(--gold-light);
+    color: black;
 }
 
 .globe-appBar-icon span {

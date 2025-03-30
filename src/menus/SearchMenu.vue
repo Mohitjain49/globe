@@ -13,10 +13,12 @@ import MenuHeader from "../components/MenuHeader.vue";
 
 import { useGlobeStore, CESIUM_GEOCODER_ID } from "../store/GlobeStore.js";
 import { onMounted, onBeforeUnmount } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const globeStore = useGlobeStore();
 
-onMounted(() => { if(globeStore.globePresent) { globeStore.cesiumGlobe.setGeocoder(true); } });
+onMounted(() => { globeStore.cesiumGlobe.setGeocoder(true); });
 onBeforeUnmount(() => { globeStore.cesiumGlobe.setGeocoder(false); });
 
 /**
@@ -24,11 +26,8 @@ onBeforeUnmount(() => { globeStore.cesiumGlobe.setGeocoder(false); });
  * Only works with a screen width of 1000 at most.
  */
 function closeMenuOnNavigation(event) {
-    if(window.innerWidth > 1000) {
-        return;
-    } else if(event.target.tagName === 'LI') {
-        globeStore.setMenuOpen(-1);
-    }
+    if(window.innerWidth > 1000 || event.target.tagName !== 'LI') { return; }
+    router.push('/blank');
 }
 
 /**

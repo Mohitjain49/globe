@@ -2,10 +2,14 @@
 <div class="globeApp-menu">
     <MenuHeader :title="'Options'" />
     <div class="globeApp-menu-body">
-        <div v-for="action in ACTIONS_ONE" class="globeApp-menu-button" @click="action.func()">
-            <font-awesome-icon :icon="action.icon" />
-            <span> {{ action.name }} </span>
-        </div>
+        <RouterLink to="/" class="globeApp-menu-button">
+            <font-awesome-icon icon="fa-magnifying-glass" />
+            <span> Search Locations </span>
+        </RouterLink>
+        <RouterLink to="/career" class="globeApp-menu-button">
+            <font-awesome-icon icon="fa-laptop-code" />
+            <span> My Career </span>
+        </RouterLink>
         <div class="globeApp-menu-line"></div>
 
         <div class="globeApp-menu-button" @click="screenStore.setFullScreen()">
@@ -18,10 +22,7 @@
         </div>
         <div class="globeApp-menu-line"></div>
 
-        <a v-for="tab in PERSONAL_WEBSITE_TABS"
-            :href="tab.link" target="mohit-website"
-            class="globeApp-menu-button">
-
+        <a v-for="tab in PERSONAL_WEBSITE_TABS" :href="tab.link" class="globeApp-menu-button gold">
             <font-awesome-icon :icon="tab.icon" />
             <span> {{ tab.name }} </span>
         </a>
@@ -61,20 +62,11 @@ import { MAIN_WEBSITE } from "../routes.js";
 
 import MenuHeader from "@/components/MenuHeader.vue";
 import { useScreenStore, reloadPage } from "../store/ExtraStores.js";
-import { useGlobeStore } from "../store/GlobeStore.js";
 import { ref } from "vue";
 
 const screenStore = useScreenStore();
-const globeStore = useGlobeStore();
-
 const hoverGithub = ref(false);
 const hoverLinkedin = ref(false);
-
-const ACTIONS_ONE = ref([
-    { name: "Search Locations", icon: "fa-magnifying-glass", func: () => { globeStore.setMenuOpen(0); } },
-    { name: "My Hobbies", icon: "fa-gamepad", func: () => { globeStore.setMenuOpen(2); } },
-    { name: "My Career", icon: "fa-laptop-code", func: () => { globeStore.setMenuOpen(3); } }
-]);
 
 const PERSONAL_WEBSITE_TABS = ref([
     { name: "View My Main Website", icon: "fa-house", link: MAIN_WEBSITE },

@@ -1,0 +1,3 @@
+<template>
+<!-- THIS COMPONENT IS BLANK TO SHOW THERE IS MENU PRESENT. -->
+</template>

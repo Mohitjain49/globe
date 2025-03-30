@@ -58,6 +58,13 @@
     width: 100%;
     overflow-y: auto;
 }
+.globeApp-menu-body.column {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
 .globeApp-menu-incomplete {
     width: calc(100% - 20px);
     height: fit-content;
@@ -67,7 +74,6 @@
     text-align: center;
     color: var(--blue-cobalt);
 }
-
 .globeApp-menu-line {
     height: 2px;
     width: 100%;
@@ -92,6 +98,14 @@
     color: black;
 }
 
+.globeApp-menu-button.gold {
+    color: var(--gold-color);
+}
+.globeApp-menu-button.gold:hover {
+    background-color: var(--gold-light);
+    color: black;
+}
+
 .globeApp-menu-button svg {
     margin-left: 8px;
     width: 22px;
@@ -106,6 +120,28 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+}
+
+.globeApp-menu-button_2 {
+    margin-top: 30px;
+    padding: 20px 0px;
+    height: 35px;
+    width: 85%;
+    border: 2px solid var(--blue-cobalt);
+    border-radius: 10px;
+}
+
+.globeApp-menu-button_2.ivue {
+    background-color: white;
+    border-color: black;
+}
+.globeApp-menu-button_2.ksu {
+    background-color: #B2B4B2;
+    border-color: var(--ksu-yellow);
+}
+.globeApp-menu-button_2.sublo {
+    background-color: #d1efff;
+    border-color: #36A1D9;
 }
 
 @media (max-width: 600px) {
