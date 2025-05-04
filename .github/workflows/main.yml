@@ -3,7 +3,7 @@ name: Build and Deploy Mohit's Website to AWS CloudFront
 on:
   push:
     branches:
-      - main # Set this to your deployment branch
+      - main-hello # Set this to your deployment branch
 
 jobs:
   build:

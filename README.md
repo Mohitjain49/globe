@@ -4,4 +4,4 @@ This repository hosts the code for my globe page. It's separate from the main we
 
 ## Link
   
-https://globe.mohit-jain.com/
+https://mohitjain49.github.io/globe/
