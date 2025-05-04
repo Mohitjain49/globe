@@ -17,7 +17,7 @@ export const globeViews = [
 ]
 
 const globeRouter = createRouter({
-    history: createWebHistory("/globe"),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes: globeViews
 });
 
