@@ -79,7 +79,7 @@
 }
 
 .cesium-geocoder-searchButton {
-    display: none;
+    display: none !important;
 }
 .cesium-viewer-bottom {
     display: none;
@@ -99,9 +99,9 @@
 }
 .globeApp-menu-transition-enter-from, .globeApp-menu-transition-leave-to {
     opacity: 0;
-    left: -345px;
+    left: -345px !important;
 }
 .globeApp-menu-transition-enter-to, .globeApp-menu-transition-leave-from {
     opacity: 1;
-    left: 55px;
+    left: 55px !important;
 }

@@ -1,0 +1,1 @@
+export const MAIN_WEBSITE = "https://www.mohit-jain.com/";

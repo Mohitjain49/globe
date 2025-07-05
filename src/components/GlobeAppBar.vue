@@ -23,9 +23,6 @@
 </template>
 
 <script setup>
-import { MAIN_WEBSITE } from '../routes.js';
-import { useScreenStore, getBtnRoute } from '../store/ExtraStores.js';
-
 const screenStore = useScreenStore();
 const SEARCH_ICON_TITLE = "Search Locations";
 const OPTIONS_ICON_TITLE = "Options";

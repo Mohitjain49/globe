@@ -1,7 +1,3 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-
 /**
  * This function reloads the current page.
  */

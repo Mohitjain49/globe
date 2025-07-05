@@ -53,16 +53,10 @@
 </template>
 
 <script setup>
-import "../styles/menu.css";
 import blue_github from "../assets/brands/blue-cobalt/fa_github_icon.svg";
 import black_github from "../assets/brands/black/fa_github_icon.svg";
 import blue_linkedin from "../assets/brands/blue-cobalt/fa_linkedin_icon.svg";
 import black_linkedin from "../assets/brands/black/fa_linkedin_icon.svg";
-import { MAIN_WEBSITE } from "../routes.js";
-
-import MenuHeader from "@/components/MenuHeader.vue";
-import { useScreenStore, reloadPage } from "../store/ExtraStores.js";
-import { ref } from "vue";
 
 const screenStore = useScreenStore();
 const hoverGithub = ref(false);

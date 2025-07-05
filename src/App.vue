@@ -1,11 +1,8 @@
 <script setup>
-import GlobeAppBar from './components/GlobeAppBar.vue';
-
-import { useGlobeStore, CESIUM_GLOBE_ID } from './store/GlobeStore.js';
-import { onMounted, onUnmounted } from 'vue';
 import './styles/globestyle.css';
-
+import './styles/menu.css';
 const globeStore = useGlobeStore();
+
 onMounted(() => { globeStore.mountGlobeStore(); });
 onUnmounted(() => { globeStore.unmountGlobeStore(); });
 </script>

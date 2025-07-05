@@ -21,6 +21,4 @@ const globeRouter = createRouter({
     routes: globeViews
 });
 
-export const MAIN_WEBSITE = "https://www.mohit-jain.com/";
-
 export default globeRouter;
