@@ -30,5 +30,7 @@ coverage
 *.tsbuildinfo
 
 # .env files
-.env.local
+.env
+.env.*
+.env.development
 .env.production

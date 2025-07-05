@@ -1,3 +1,7 @@
+import "@fontsource/lexend";
+import "@fontsource/roboto";
+import '~build/console';
+
 import "./styles/mainstyles.css";
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 

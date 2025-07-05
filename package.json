@@ -1,6 +1,6 @@
 {
   "name": "mohit-website-globe",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,22 +9,29 @@
     "preview": "vite preview",
     "open": "vite --open",
     "open:preview": "vite preview --open",
-    "open:build": "vite build & vite preview --open"
+    "open:build": "vite build & vite preview --open",
+    "update": "npx npm-check-updates"
   },
   "dependencies": {
+    "@fontsource/lexend": "^5.2.9",
+    "@fontsource/roboto": "^5.2.6",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "animate.css": "^4.1.1",
-    "cesium": "^1.125.0",
+    "cesium": "^1.131.0",
     "fontawesome": "^5.6.3",
-    "pinia": "^2.3.1",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "pinia": "^3.0.3",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "vite-plugin-static-copy": "^2.3.1",
-    "vite": "^6.0.5"
+    "@vitejs/plugin-vue": "^6.0.0",
+    "unplugin-auto-import": "^19.3.0",
+    "unplugin-info": "^1.2.2",
+    "unplugin-swc": "^1.5.5",
+    "unplugin-vue-components": "^28.8.0",
+    "vite": "^7.0.2",
+    "vite-plugin-static-copy": "^3.1.0"
   }
 }
