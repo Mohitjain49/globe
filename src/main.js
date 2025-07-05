@@ -15,7 +15,9 @@ const pinia = createPinia();
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import * as FaIcons from '@fortawesome/free-solid-svg-icons';
+import * as FaBrands from "@fortawesome/free-brands-svg-icons";
 
 library.add(
     FaIcons.faMapPin,
@@ -35,7 +37,10 @@ library.add(
     FaIcons.faFileLines,
     FaIcons.faRotateRight,
     FaIcons.faEnvelope,
-    FaIcons.faEllipsisVertical
+    FaIcons.faEllipsisVertical,
+
+    FaBrands.faSquareGithub,
+    FaBrands.faLinkedin
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).
