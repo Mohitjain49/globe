@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import SearchMenu from "./menus/SearchMenu.vue";
 import OptionsMenu from "./menus/OptionsMenu.vue";
+import MapMenu from "./menus/MapMenu.vue";
 import NoMenu from "./menus/NoMenu.vue";
 
 /**
@@ -10,9 +11,9 @@ import NoMenu from "./menus/NoMenu.vue";
 export const globeViews = [
     { path: "/", component: SearchMenu },
     { path: "/options", component: OptionsMenu },
+    { path: "/map", component: MapMenu },
 
     { path: "/blank", component: NoMenu },
-    { path: "/search", redirect: "/" },
     { path: '/:catchAll(.*)', redirect: "/" },
 ]
 

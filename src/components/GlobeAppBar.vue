@@ -1,17 +1,14 @@
 <template>
 <div class="globe-appBar">
     <div class="globe-appBar-top">
-        <RouterLink :to="getBtnRoute('/')" class="globe-appBar-icon" :title="SEARCH_ICON_TITLE">
-            <font-awesome-icon icon="fa-magnifying-glass" />
-            <span>Search</span>
+        <RouterLink v-for="menu in MAIN_MENUS" :to="getBtnRoute(menu.route)" class="globe-appBar-icon" :title="menu.title">
+            <font-awesome-icon :icon="menu.faIcon" />
+            <span> {{ menu.text }} </span>
         </RouterLink>
     </div>
+
     <div class="globe-appBar-bottom">
-        <RouterLink :to="getBtnRoute('/options')" class="globe-appBar-icon" :title="OPTIONS_ICON_TITLE">
-            <font-awesome-icon icon="fa-ellipsis-vertical" />
-            <span>Options</span>
-        </RouterLink>
-        <a :href="MAIN_WEBSITE" class="globe-appBar-icon gold" :title="HOME_ICON_TITLE">
+        <a :href="MAIN_WEBSITE" class="globe-appBar-icon gold" title="My Main Website">
             <font-awesome-icon icon="fa-house" style="margin-top: 3px;" />
             <span>Home</span>
         </a>
@@ -24,9 +21,11 @@
 
 <script setup>
 const screenStore = useScreenStore();
-const SEARCH_ICON_TITLE = "Search Locations";
-const OPTIONS_ICON_TITLE = "Options";
-const HOME_ICON_TITLE = "My Main Website";
+const MAIN_MENUS = [
+    { route: "/", faIcon: "fa-magnifying-glass", text: "Search", title: "Search Locations" },
+    { route: "/map", faIcon: "fa-book-atlas", text: "Map", title: "Map Settings" },
+    { route: "/options", faIcon: "fa-bars-staggered", text: "Options", title: "Options" },
+]
 </script>
 
 <style scoped>

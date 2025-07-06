@@ -37,7 +37,8 @@ library.add(
     FaIcons.faFileLines,
     FaIcons.faRotateRight,
     FaIcons.faEnvelope,
-    FaIcons.faEllipsisVertical,
+    FaIcons.faBarsStaggered,
+    FaIcons.faBookAtlas,
 
     FaBrands.faSquareGithub,
     FaBrands.faLinkedin
