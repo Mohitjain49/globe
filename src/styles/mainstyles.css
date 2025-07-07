@@ -17,9 +17,8 @@
     --silver-color: #adadad;
     --silver-light: #e4e2e2;
     --globe-green: #4fc20c;
+    --globe-green-opaque: #3C7F13;
     --globe-light-green: #8cf94e;
-
-    --ksu-yellow: #ffc629;
 
     --empty-border: 2px solid rgba(0, 0, 0, 0);
     --thin-empty-border: 1px solid rgba(0, 0, 0, 0);
@@ -44,6 +43,11 @@ a, RouterLink {
     color: inherit;
     border-color: inherit;
 }
+button {
+    all: unset;
+    cursor: pointer;
+}
+
 iframe {
     border: none;
     width: 100%;

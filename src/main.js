@@ -39,9 +39,11 @@ library.add(
     FaIcons.faEnvelope,
     FaIcons.faBarsStaggered,
     FaIcons.faBookAtlas,
+    FaIcons.faCodeCommit,
 
     FaBrands.faSquareGithub,
-    FaBrands.faLinkedin
+    FaBrands.faLinkedin,
+    FaBrands.faGithub
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).

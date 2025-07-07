@@ -10,7 +10,11 @@
     <div class="globe-appBar-bottom">
         <a :href="MAIN_WEBSITE" class="globe-appBar-icon gold" title="My Main Website">
             <font-awesome-icon icon="fa-house" style="margin-top: 3px;" />
-            <span>Home</span>
+            <span> Home </span>
+        </a>
+        <a :href="REPOSITORY_LINK" class="globe-appBar-icon" title="GitHub Repository">
+            <font-awesome-icon icon="fa-brands fa-github" style="margin-top: 3px;" />
+            <span> Git Repo </span>
         </a>
         <div class="globe-appBar-icon screen" :title="screenStore.elementTitle" @click="screenStore.setFullScreen()">
             <font-awesome-icon :icon="screenStore.faIcon" />

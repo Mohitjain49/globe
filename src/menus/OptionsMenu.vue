@@ -2,13 +2,9 @@
 <div class="globeApp-menu">
     <MenuHeader :title="'Options'" />
     <div class="globeApp-menu-body">
-        <RouterLink to="/" class="globeApp-menu-button">
-            <font-awesome-icon icon="fa-magnifying-glass" />
-            <span> Search Locations </span>
-        </RouterLink>
-        <RouterLink to="/career" class="globeApp-menu-button">
-            <font-awesome-icon icon="fa-laptop-code" />
-            <span> My Career </span>
+        <RouterLink v-for="tab in MENU_TABS" :to="tab.route" class="globeApp-menu-button">
+            <font-awesome-icon :icon="tab.icon" />
+            <span> {{ tab.text }} </span>
         </RouterLink>
         <div class="globeApp-menu-line"></div>
 
@@ -32,20 +28,36 @@
             <font-awesome-icon :icon="tab.icon" />
             <span> {{ tab.name }} </span>
         </a>
+        <div class="globeApp-menu-line"></div>
+
+        <a v-for="tab in REPO_TABS" :href="tab.link" class="globeApp-menu-button">
+            <font-awesome-icon :icon="tab.icon" />
+            <span> {{ tab.name }} </span>
+        </a>
     </div>
 </div>
 </template>
 
 <script setup>
 const screenStore = useScreenStore();
+
+const MENU_TABS = ref([
+    { route: "/", icon: "fa-magnifying-glass", text: "Search Locations" },
+    { route: "/map", icon: "fa-book-atlas", text: "Map Settings" },
+])
 const PERSONAL_WEBSITE_TABS = ref([
     { name: "View My Main Website", icon: "fa-house", link: MAIN_WEBSITE },
     { name: "Contact Me", icon: "fa-paper-plane", link: (MAIN_WEBSITE + 'contact/') },
     { name: "View My Resume", icon: "fa-file-lines", link: (MAIN_WEBSITE + 'resume/') }
 ]);
+
 const SOCIALS_TABS = ref([
     { name: "Email Me", icon: "fa-envelope", link: ("mailto:" + MAIN_EMAIL) },
-    { name: "My GitHub Portfolio", icon: "fa-brands fa-square-github", link: GITHUB_PROFILE },
-    { name: "View My Resume", icon: "fa-brands fa-linkedin", link: LINKEDIN_PROFILE }
+    { name: "My GitHub Profile", icon: "fa-brands fa-square-github", link: GITHUB_PROFILE },
+    { name: "My LinkedIn Profile", icon: "fa-brands fa-linkedin", link: LINKEDIN_PROFILE }
+]);
+const REPO_TABS = ref([
+    { name: "GitHub Repository", icon: "fa-brands fa-github", link: REPOSITORY_LINK },
+    { name: "Commits", icon: "fa-code-commit", link: COMMITS_LINK }
 ]);
 </script>
