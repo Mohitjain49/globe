@@ -17,6 +17,14 @@
             <p> Bing Maps (Roads) </p>
         </button>
     </div>
+
+    <h2 class="map-menu-header"> 3D Tiles </h2>
+    <div class="map-menu-opt">
+        <label class="map-menu-opt-checkbox">
+            <span> Google 3D Tiles </span>
+            <input type="checkbox" v-model="globeStore.showGoogleTileset" @change="globeStore.setGoogleTilesetStatus()" />
+        </label>
+    </div>
 </div>
 </template>
 
@@ -56,13 +64,14 @@ function getLayerBtnClasses(index = 0) {;
 }
 
 .map-sidebar-layers-container {
-    width: 270px;
+    width: calc(100% - 40px);
     height: 120px;
     margin-left: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+    gap: 20px;
 }
 
 .map-sidebar-layerBtn {
@@ -96,6 +105,13 @@ function getLayerBtnClasses(index = 0) {;
     width: 45px;
     height: 45px;
     margin-bottom: 6px;
+    user-select: none;
+}
+.map-sidebar-layerBtn svg {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 6px;
+    user-select: none;
 }
 
 .map-sidebar-layerBtn.selected {
@@ -104,5 +120,37 @@ function getLayerBtnClasses(index = 0) {;
 }
 .map-sidebar-layerBtn.selected p {
     color: var(--globe-green-opaque);
+}
+
+.map-menu-opt {
+    height: fit-content;
+    margin-bottom: 4px;
+    justify-content: flex-start;
+    display: flex;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    align-items: center;
+}
+
+.map-menu-opt-checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--blue-cobalt);
+    font-size: 15px;
+    font-family: 'Lexend', 'sans-serif';
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+.map-menu-opt-checkbox svg {
+    width: 16px;
+    user-select: none;
+    margin-right: 5px;
+}
+.map-menu-opt-checkbox input {
+    position: relative;
+    top: 1px;
+    left: 1px;
 }
 </style>

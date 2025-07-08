@@ -9,11 +9,17 @@ export const useGlobeStore = defineStore("globe-store", () => {
     const screenStore = useScreenStore();
 
     const mapLayersIndex = ref(1);
+    const showGoogleTileset = ref(false);
 
     /**
      * @type {import('vue').Ref<AppGlobe>} This is the Cesium Globe that is used within the webpage.
      */
     const cesiumGlobe = ref(null);
+
+    /**
+     * @type {Cesium.Primitive} This is the primitive that hosts Google tileset.
+     */
+    var googleTilesetPrimitive;
 
     /**
      * This returns the "blank" route if the visitor is already visiting that route.
@@ -26,7 +32,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
     /**
      * This mounts the globe store when used by the Globe Page.
      */
-    function mountGlobeStore() {
+    async function mountGlobeStore() {
         cesiumGlobe.value = new AppGlobe();
         pageViewStore.setPageViewEL();
         screenStore.setFullScreenEL();
@@ -35,6 +41,13 @@ export const useGlobeStore = defineStore("globe-store", () => {
             router.replace("/blank")
         }
         setGlobeELs();
+
+        Cesium.Cesium3DTileset.fromIonAssetId(2275207).then((tileset) => {
+            googleTilesetPrimitive = cesiumGlobe.value.viewer.scene.primitives.add(tileset);
+            googleTilesetPrimitive.show = false;
+        }).catch((e) => {
+            console.error(e);
+        });
     }
 
     /**
@@ -80,38 +93,59 @@ export const useGlobeStore = defineStore("globe-store", () => {
     }
 
     /**
+     * Based on the boolean, this will set the status of the google tileset.
+     */
+    function setGoogleTilesetStatus() {
+        if(googleTilesetPrimitive == null) {
+            showGoogleTileset.value = false;
+            return;
+        } else {
+            googleTilesetPrimitive.show = showGoogleTileset.value;
+        }
+    }
+
+    /**
      * This function sets the map layers.
      * @param {Number} index The index of the map layers.
      */
     function setMapLayers(index = 1) {
+        handleCurrentMapRemoval(index);
         if(index == 0 && mapLayersIndex.value != 0) {
-            const aerialMap = Cesium.ImageryLayer.fromWorldImagery({
-                style: Cesium.IonWorldImageryStyle.AERIAL
-            });
-
-            cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
-            cesiumGlobe.value.viewer.imageryLayers.add(aerialMap);
             mapLayersIndex.value = 0;
+            setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
+                style: Cesium.IonWorldImageryStyle.AERIAL
+            }));
         } else if(index == 1 && mapLayersIndex.value != 1) {
-            const labelsMap = Cesium.ImageryLayer.fromWorldImagery({
-                style: Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
-            });
-
-            cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
-            cesiumGlobe.value.viewer.imageryLayers.add(labelsMap);
             mapLayersIndex.value = 1;
-        } else if(index == 2&& mapLayersIndex.value != 2) {
-            const roadMap = Cesium.ImageryLayer.fromWorldImagery({
-                style: Cesium.IonWorldImageryStyle.ROAD
-            });
-
-            cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
-            cesiumGlobe.value.viewer.imageryLayers.add(roadMap);
+            setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
+                style: Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
+            }));
+        } else if(index == 2 && mapLayersIndex.value != 2) {
             mapLayersIndex.value = 2;
+            setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
+                style: Cesium.IonWorldImageryStyle.ROAD
+            }));
         }
     }
 
-    return { cesiumGlobe, mapLayersIndex,
-        mountGlobeStore, unmountGlobeStore, getNavBtnRoute, setMapLayers
+    /**
+     * This helper function handles removing the Google Tileset.
+     * @param {Number} index The index of the option to be selected.
+     */
+    function handleCurrentMapRemoval(index) {
+        if(index == mapLayersIndex.value) { return; }
+        cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
+    }
+
+    /**
+     * This helper function adds the imagery layer to the map.
+     * @param {Cesium.ImageryLayer} layer The Cesium Imagery Layer.
+     */
+    function setImageryLayer(layer) {
+        cesiumGlobe.value.viewer.imageryLayers.add(layer);
+    }
+
+    return { cesiumGlobe, mapLayersIndex, showGoogleTileset,
+        mountGlobeStore, unmountGlobeStore, getNavBtnRoute, setMapLayers, setGoogleTilesetStatus
     }
 });

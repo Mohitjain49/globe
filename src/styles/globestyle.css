@@ -82,7 +82,7 @@
     display: none !important;
 }
 .cesium-viewer-bottom {
-    display: none;
+    display: none !important;
 }
 
 .search-results {
