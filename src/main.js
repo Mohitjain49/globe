@@ -1,4 +1,9 @@
+import "@fontsource/lexend";
+import "@fontsource/roboto";
+import '~build/console';
+
 import "./styles/mainstyles.css";
+import './styles/globestyle.css';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 
 import { createApp } from 'vue';
@@ -10,7 +15,9 @@ const pinia = createPinia();
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import * as FaIcons from '@fortawesome/free-solid-svg-icons';
+import * as FaBrands from "@fortawesome/free-brands-svg-icons";
 
 library.add(
     FaIcons.faMapPin,
@@ -30,7 +37,13 @@ library.add(
     FaIcons.faFileLines,
     FaIcons.faRotateRight,
     FaIcons.faEnvelope,
-    FaIcons.faEllipsisVertical
+    FaIcons.faBarsStaggered,
+    FaIcons.faBookAtlas,
+    FaIcons.faCodeCommit,
+
+    FaBrands.faSquareGithub,
+    FaBrands.faLinkedin,
+    FaBrands.faGithub
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).

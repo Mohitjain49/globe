@@ -2,13 +2,9 @@
 <div class="globeApp-menu">
     <MenuHeader :title="'Options'" />
     <div class="globeApp-menu-body">
-        <RouterLink to="/" class="globeApp-menu-button">
-            <font-awesome-icon icon="fa-magnifying-glass" />
-            <span> Search Locations </span>
-        </RouterLink>
-        <RouterLink to="/career" class="globeApp-menu-button">
-            <font-awesome-icon icon="fa-laptop-code" />
-            <span> My Career </span>
+        <RouterLink v-for="tab in MENU_TABS" :to="tab.route" class="globeApp-menu-button">
+            <font-awesome-icon :icon="tab.icon" />
+            <span> {{ tab.text }} </span>
         </RouterLink>
         <div class="globeApp-menu-line"></div>
 
@@ -28,49 +24,40 @@
         </a>
         <div class="globeApp-menu-line"></div>
 
-        <a href="mailto:mohitkjain49@gmail.com" class="globeApp-menu-button">
-            <font-awesome-icon icon="fa-envelope" />
-            <span> Email Me </span>
+        <a v-for="tab in SOCIALS_TABS" :href="tab.link" class="globeApp-menu-button">
+            <font-awesome-icon :icon="tab.icon" />
+            <span> {{ tab.name }} </span>
         </a>
-        <a href="https://github.com/Mohitjain49/" target="mohit-github-tab"
-            class="globeApp-menu-button"
-            @mouseenter="hoverGithub = true"
-            @mouseleave="hoverGithub = false">
-            
-            <img :src="(hoverGithub ? black_github : blue_github)" />
-            <span> My GitHub Profile </span>
-        </a>
-        <a href="https://www.linkedin.com/in/mohitjain49/" target="mohit-linkedin-tab"
-            class="globeApp-menu-button"
-            @mouseenter="hoverLinkedin = true"
-            @mouseleave="hoverLinkedin = false">
+        <div class="globeApp-menu-line"></div>
 
-            <img :src="(hoverLinkedin ? black_linkedin : blue_linkedin)" />
-            <span> My LinkedIn Profile </span>
+        <a v-for="tab in REPO_TABS" :href="tab.link" class="globeApp-menu-button">
+            <font-awesome-icon :icon="tab.icon" />
+            <span> {{ tab.name }} </span>
         </a>
     </div>
 </div>
 </template>
 
 <script setup>
-import "../styles/menu.css";
-import blue_github from "../assets/brands/blue-cobalt/fa_github_icon.svg";
-import black_github from "../assets/brands/black/fa_github_icon.svg";
-import blue_linkedin from "../assets/brands/blue-cobalt/fa_linkedin_icon.svg";
-import black_linkedin from "../assets/brands/black/fa_linkedin_icon.svg";
-import { MAIN_WEBSITE } from "../routes.js";
-
-import MenuHeader from "@/components/MenuHeader.vue";
-import { useScreenStore, reloadPage } from "../store/ExtraStores.js";
-import { ref } from "vue";
-
 const screenStore = useScreenStore();
-const hoverGithub = ref(false);
-const hoverLinkedin = ref(false);
 
+const MENU_TABS = ref([
+    { route: "/", icon: "fa-magnifying-glass", text: "Search Locations" },
+    { route: "/map", icon: "fa-book-atlas", text: "Map Settings" },
+])
 const PERSONAL_WEBSITE_TABS = ref([
     { name: "View My Main Website", icon: "fa-house", link: MAIN_WEBSITE },
     { name: "Contact Me", icon: "fa-paper-plane", link: (MAIN_WEBSITE + 'contact/') },
     { name: "View My Resume", icon: "fa-file-lines", link: (MAIN_WEBSITE + 'resume/') }
+]);
+
+const SOCIALS_TABS = ref([
+    { name: "Email Me", icon: "fa-envelope", link: ("mailto:" + MAIN_EMAIL) },
+    { name: "My GitHub Profile", icon: "fa-brands fa-square-github", link: GITHUB_PROFILE },
+    { name: "My LinkedIn Profile", icon: "fa-brands fa-linkedin", link: LINKEDIN_PROFILE }
+]);
+const REPO_TABS = ref([
+    { name: "GitHub Repository", icon: "fa-brands fa-github", link: REPOSITORY_LINK },
+    { name: "Commits", icon: "fa-code-commit", link: COMMITS_LINK }
 ]);
 </script>

@@ -8,13 +8,6 @@
 </template>
 
 <script setup>
-import "../styles/menu.css";
-import MenuHeader from "../components/MenuHeader.vue";
-
-import { useGlobeStore, CESIUM_GEOCODER_ID } from "../store/GlobeStore.js";
-import { onMounted, onBeforeUnmount } from "vue";
-import { useRouter } from "vue-router";
-
 const router = useRouter();
 const globeStore = useGlobeStore();
 

@@ -1,7 +1,6 @@
 import * as Cesium from 'cesium';
-import { CESIUM_GLOBE_ID, CESIUM_GEOCODER_ID } from './GlobeStore';
 
-export default class AppGlobe {
+export class AppGlobe {
     /**
      * This class initializes the Cesium Map on any page that imports this class.
      * It is meant to be a universal class so it can be used in many projects.

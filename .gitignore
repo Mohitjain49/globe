@@ -28,7 +28,11 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+*components.d.ts
+*auto-imports.d.ts
 
 # .env files
-.env.local
+.env
+.env.*
+.env.development
 .env.production
