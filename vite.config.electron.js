@@ -13,9 +13,13 @@ const cesiumSource = "node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesium";
 
 export default defineConfig({
-    base: "/globe/",
+    base: "./",
     server: { port: 5050 },
-    build: { chunkSizeWarningLimit: 5000 },
+    build: {
+        chunkSizeWarningLimit: 5000,
+        outDir: 'dist-electron',
+        emptyOutDir: true
+    },
     plugins: [
         vue(),
         swc.vite(),

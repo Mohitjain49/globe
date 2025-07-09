@@ -3,6 +3,7 @@
   "version": "0.4.1",
   "private": true,
   "type": "module",
+  "main": "app.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,7 +11,14 @@
     "open": "vite --open",
     "open:preview": "vite preview --open",
     "open:build": "vite build & vite preview --open",
-    "update": "npx npm-check-updates"
+    "update": "npx npm-check-updates",
+    "electron": "electron .",
+    "build:electron": "vite build --config vite.config.electron.js && electron .",
+    "package:windows": "electron-packager ./ PizzaProject5 --platform=win64 --overwrite",
+    "package:linux": "electron-packager ./ PizzaProject5 --platform=linux --overwrite",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "make:linux": "electron-forge make --linux"
   },
   "dependencies": {
     "@fontsource/lexend": "^5.2.9",
@@ -21,13 +29,24 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "animate.css": "^4.1.1",
     "cesium": "^1.131.0",
+    "electron-squirrel-startup": "^1.0.1",
     "fontawesome": "^5.6.3",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "@electron/packager": "^18.3.6",
     "@vitejs/plugin-vue": "^6.0.0",
+    "electron": "^37.2.0",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-info": "^1.2.2",
     "unplugin-swc": "^1.5.5",
