@@ -27,7 +27,6 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.6.2",
     "@vitejs/plugin-vue": "^6.0.0",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-info": "^1.2.2",
