@@ -11,9 +11,10 @@ import AutoImport from "unplugin-auto-import/vite";
 
 const cesiumSource = "node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesium";
+const GLOBE_BASE_URL = (process.env.TAURI === 'true' ? "./" : "/globe/")
 
 export default defineConfig({
-    base: "/globe/",
+    base: GLOBE_BASE_URL,
     server: { port: 5050 },
     build: { chunkSizeWarningLimit: 5000 },
     plugins: [
