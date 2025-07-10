@@ -5,6 +5,10 @@
             <font-awesome-icon :icon="menu.faIcon" />
             <span> {{ menu.text }} </span>
         </RouterLink>
+        <button @click="downloadAppInstaller()" class="globe-appBar-icon gold download" title="Download Globe as Windows OS App">
+            <font-awesome-icon icon="fa-cloud-arrow-down" style="margin-top: 3px;" />
+            <span> Download (Windows) </span>
+        </button>
     </div>
 
     <div class="globe-appBar-bottom">
@@ -97,8 +101,16 @@ const MAIN_MENUS = [
     font-size: 11px;
     font-family: 'Lexend', sans-serif;
     font-weight: bold;
+    text-align: center;
 }
 .globe-appBar-icon.screen {
     font-size: 28px;
+}
+
+.globe-appBar-icon.download {
+    height: 61px;
+}
+.globe-appBar-icon.download span {
+    font-size: 9px;
 }
 </style>
