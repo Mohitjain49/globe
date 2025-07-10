@@ -5,10 +5,10 @@
             <font-awesome-icon :icon="menu.faIcon" />
             <span> {{ menu.text }} </span>
         </RouterLink>
-        <button @click="downloadAppInstaller()" class="globe-appBar-icon gold download" title="Download Globe as Windows OS App">
+        <a v-if="SHOW_DOWNLOAD_BTN" :href="WINDOW_INSTALL_PATH" class="globe-appBar-icon gold download" title="Download Globe as Windows OS App" download>
             <font-awesome-icon icon="fa-cloud-arrow-down" style="margin-top: 3px;" />
             <span> Download (Windows) </span>
-        </button>
+        </a>
     </div>
 
     <div class="globe-appBar-bottom">
@@ -29,6 +29,9 @@
 
 <script setup>
 const screenStore = useScreenStore();
+const SHOW_DOWNLOAD_BTN = (import.meta.env.VITE_IS_TAURI === "false");
+const WINDOW_INSTALL_PATH = "/mohit_globe_windows_installer.msi";
+
 const MAIN_MENUS = [
     { route: "/", faIcon: "fa-magnifying-glass", text: "Search", title: "Search Locations" },
     { route: "/map", faIcon: "fa-book-atlas", text: "Map", title: "Map Settings" },

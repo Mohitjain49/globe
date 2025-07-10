@@ -12,9 +12,9 @@
     "open:build": "vite build & vite preview --open",
     "update": "npx npm-check-updates",
     "tauri": "tauri",
-    "dev:tauri": "vite --config vite.tauri.config.js",
-    "build:tauri": "vite build --config vite.tauri.config.js",
-    "build:app": "tauri build --no-bundle"
+    "dev:tauri": "vite --config vite.tauri.config.js --mode tauri",
+    "build:tauri": "vite build --config vite.tauri.config.js --mode tauri",
+    "build:app": "tauri build"
   },
   "dependencies": {
     "@fontsource/lexend": "^5.2.9",
