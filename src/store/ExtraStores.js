@@ -1,3 +1,5 @@
+import appInstaller from "/globe_windows_installer.msi?url";
+
 /**
  * This function reloads the current page.
  */
@@ -12,6 +14,18 @@ export function reloadPage() {
 export function getBtnRoute(btnRoute = "/") {
     const route = useRoute();
     return ((route.path === btnRoute) ? '/blank' : btnRoute);
+}
+
+/**
+ * This function downloads the windows app installer.
+ */
+export function downloadAppInstaller() {
+    const link = document.createElement('a');
+    link.href = appInstaller;
+    link.download = ("/mohit_globe_windows_installer.msi");
+
+    link.click();
+    link.remove();
 }
 
 /**

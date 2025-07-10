@@ -40,6 +40,7 @@ library.add(
     FaIcons.faBarsStaggered,
     FaIcons.faBookAtlas,
     FaIcons.faCodeCommit,
+    FaIcons.faCloudArrowDown,
 
     FaBrands.faSquareGithub,
     FaBrands.faLinkedin,
