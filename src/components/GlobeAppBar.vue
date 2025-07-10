@@ -30,7 +30,7 @@
 <script setup>
 const screenStore = useScreenStore();
 const SHOW_DOWNLOAD_BTN = (import.meta.env.VITE_IS_TAURI === "false");
-const WINDOW_INSTALL_PATH = "/mohit_globe_windows_installer.msi";
+const WINDOW_INSTALL_PATH = "https://mohitjain49.github.io/globe/mohit_globe_windows_installer.msi";
 
 const MAIN_MENUS = [
     { route: "/", faIcon: "fa-magnifying-glass", text: "Search", title: "Search Locations" },
