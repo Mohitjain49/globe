@@ -41,6 +41,7 @@ library.add(
     FaIcons.faBookAtlas,
     FaIcons.faCodeCommit,
     FaIcons.faCloudArrowDown,
+    FaIcons.faCircleInfo,
 
     FaBrands.faSquareGithub,
     FaBrands.faLinkedin,

@@ -44,6 +44,7 @@ const screenStore = useScreenStore();
 const MENU_TABS = ref([
     { route: "/", icon: "fa-magnifying-glass", text: "Search Locations" },
     { route: "/map", icon: "fa-book-atlas", text: "Map Settings" },
+    { route: "/about", icon: "fa-circle-info", text: "About This App" },
 ])
 const PERSONAL_WEBSITE_TABS = ref([
     { name: "View My Main Website", icon: "fa-house", link: MAIN_WEBSITE },
