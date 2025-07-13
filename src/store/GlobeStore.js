@@ -109,32 +109,32 @@ export const useGlobeStore = defineStore("globe-store", () => {
      * @param {Number} index The index of the map layers.
      */
     function setMapLayers(index = 1) {
-        handleCurrentMapRemoval(index);
-        if(index == 0 && mapLayersIndex.value != 0) {
+        if(index == mapLayersIndex.value) { return; }
+        cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
+
+        if(index == 0) {
             mapLayersIndex.value = 0;
             setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
                 style: Cesium.IonWorldImageryStyle.AERIAL
             }));
-        } else if(index == 1 && mapLayersIndex.value != 1) {
+        } else if(index == 1) {
             mapLayersIndex.value = 1;
             setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
                 style: Cesium.IonWorldImageryStyle.AERIAL_WITH_LABELS
             }));
-        } else if(index == 2 && mapLayersIndex.value != 2) {
+        } else if(index == 2) {
             mapLayersIndex.value = 2;
             setImageryLayer(Cesium.ImageryLayer.fromWorldImagery({
                 style: Cesium.IonWorldImageryStyle.ROAD
             }));
+        } else if(index == 3) {
+            mapLayersIndex.value = 3;
+            setImageryLayer(Cesium.ImageryLayer.fromProviderAsync(
+                Cesium.TileMapServiceImageryProvider.fromUrl(
+                    Cesium.buildModuleUrl("Assets/Textures/NaturalEarthII")
+                )
+            ));
         }
-    }
-
-    /**
-     * This helper function handles removing the Google Tileset.
-     * @param {Number} index The index of the option to be selected.
-     */
-    function handleCurrentMapRemoval(index) {
-        if(index == mapLayersIndex.value) { return; }
-        cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
     }
 
     /**
