@@ -10,7 +10,10 @@
     "open": "vite --open",
     "open:preview": "vite preview --open",
     "open:build": "vite build & vite preview --open",
+
     "update": "npx npm-check-updates",
+    "build:both": "vite build & vite build --config vite.tauri.config.js --mode tauri",
+
     "tauri": "tauri",
     "dev:tauri": "vite --config vite.tauri.config.js --mode tauri",
     "build:tauri": "vite build --config vite.tauri.config.js --mode tauri",

@@ -107,9 +107,10 @@ function getLayerBtnClasses(index = 0) {;
 }
 .map-sidebar-layerBtn img {
     width: 45px;
-    height: 45px;
+    height: auto;
     margin-bottom: 6px;
     user-select: none;
+    border-radius: 5px;
 }
 .map-sidebar-layerBtn svg {
     width: 45px;
@@ -161,6 +162,19 @@ function getLayerBtnClasses(index = 0) {;
 @media (max-width: 500px) {
     .map-sidebar-layers-container {
         gap: 10px;
+    }
+    .map-sidebar-layerBtn {
+        width: 50px;
+        height: 110px;
+    }
+
+    .map-sidebar-layerBtn p {
+        font-size: 10px;
+        line-height: 14px;
+        height: 45px;
+    }
+    .map-sidebar-layerBtn img {
+        width: 40px;
     }
 }
 </style>
