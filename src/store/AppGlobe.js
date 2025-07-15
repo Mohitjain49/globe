@@ -7,11 +7,6 @@ export class AppGlobe {
      * @param {Cesium.Cartesian3} lastCameraPos The last Camera Position of the app.
      */
     constructor(lastCameraPos = this.createPosition(-84.40082186713498, 33.75542871465707, 1500000)) {
-
-        // This is the Cesium Ion Token that is defined for this app.
-        Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN;
-
-        // This is the viewer being defined for this new app.
         this.viewer = new Cesium.Viewer(CESIUM_GLOBE_ID, {
             baseLayerPicker: false,
             timeline: false,

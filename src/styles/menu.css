@@ -109,3 +109,20 @@
         border-right: none;
     }
 }
+
+.globeApp-menu-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    background: var(--blue-zero);
+}
+.globeApp-menu-body::-webkit-scrollbar-thumb {
+    background-color: var(--blue-three);
+    transition: background-color 0.2s;
+}
+.globeApp-menu-body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blue-cobalt);
+}
+.globeApp-menu-body::-webkit-scrollbar-button {
+    display: none;
+}

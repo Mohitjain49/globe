@@ -33,8 +33,9 @@ const SHOW_DOWNLOAD_BTN = (import.meta.env.VITE_IS_TAURI === "false");
 const WINDOW_INSTALL_PATH = "https://mohitjain49.github.io/globe/mohit_globe_windows_installer.msi";
 
 const MAIN_MENUS = [
-    { route: "/", faIcon: "fa-magnifying-glass", text: "Search", title: "Search Locations" },
+    { route: ["/", "/search"], faIcon: "fa-magnifying-glass", text: "Search", title: "Search Locations" },
     { route: "/map", faIcon: "fa-book-atlas", text: "Map", title: "Map Settings" },
+    { route: "/about", faIcon: "fa-circle-info", text: "About", title: "About This App" },
     { route: "/options", faIcon: "fa-bars-staggered", text: "Options", title: "Options" },
 ]
 </script>

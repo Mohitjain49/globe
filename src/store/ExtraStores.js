@@ -7,11 +7,15 @@ export function reloadPage() {
 
 /**
  * This returns the "blank" route if the visitor is already visiting that route.
- * @param {String} btnRoute The route to navigate to upon clicking the button.
+ * @param {String | Array<String>} btnRoute The route or routes to navigate to upon clicking the button.
  */
 export function getBtnRoute(btnRoute = "/") {
     const route = useRoute();
-    return ((route.path === btnRoute) ? '/blank' : btnRoute);
+    if(typeof btnRoute === "string") {
+        return ((route.path === btnRoute) ? '/blank' : btnRoute);
+    } else {
+        return ((-1 != btnRoute.findIndex(item => item === route.path)) ? '/blank' : btnRoute[0]);
+    }
 }
 
 /**

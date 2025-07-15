@@ -14,7 +14,10 @@ const cesiumBaseUrl = "cesium";
 
 export default defineConfig({
     base: "/globe/",
-    server: { port: 5050 },
+    server: {
+        port: 5050,
+        watch: { ignored: ["**/src-tauri/**"] }
+    },
     build: { chunkSizeWarningLimit: 5000 },
     plugins: [
         vue(),

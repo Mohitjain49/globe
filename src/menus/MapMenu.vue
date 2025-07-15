@@ -16,6 +16,10 @@
             <img :src="RoadsBing" />
             <p> Bing Maps (Roads) </p>
         </button>
+        <button :class="getLayerBtnClasses(3)" @click="globeStore.setMapLayers(3)">
+            <img :src="NaturalEarth" />
+            <p> Natural Earth II </p>
+        </button>
     </div>
 
     <h2 class="map-menu-header"> 3D Tiles </h2>
@@ -32,7 +36,7 @@
 import AerialBing from '@/assets/bing-aerial-maps.png';
 import AerialLabelsBing from '@/assets/bing-aerial-labels-maps.png';
 import RoadsBing from '@/assets/bing-road-maps.png';
-
+import NaturalEarth from '@/assets/natural-earth-ii.png';
 const globeStore = useGlobeStore();
 
 /**
@@ -103,9 +107,10 @@ function getLayerBtnClasses(index = 0) {;
 }
 .map-sidebar-layerBtn img {
     width: 45px;
-    height: 45px;
+    height: auto;
     margin-bottom: 6px;
     user-select: none;
+    border-radius: 5px;
 }
 .map-sidebar-layerBtn svg {
     width: 45px;
@@ -152,5 +157,24 @@ function getLayerBtnClasses(index = 0) {;
     position: relative;
     top: 1px;
     left: 1px;
+}
+
+@media (max-width: 500px) {
+    .map-sidebar-layers-container {
+        gap: 10px;
+    }
+    .map-sidebar-layerBtn {
+        width: 50px;
+        height: 110px;
+    }
+
+    .map-sidebar-layerBtn p {
+        font-size: 10px;
+        line-height: 14px;
+        height: 45px;
+    }
+    .map-sidebar-layerBtn img {
+        width: 40px;
+    }
 }
 </style>

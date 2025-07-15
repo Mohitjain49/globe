@@ -8,6 +8,7 @@ import 'cesium/Build/Cesium/Widgets/widgets.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { Ion } from "cesium";
 
 import App from './App.vue';
 import globeRouter from './routes.js';
@@ -41,11 +42,14 @@ library.add(
     FaIcons.faBookAtlas,
     FaIcons.faCodeCommit,
     FaIcons.faCloudArrowDown,
+    FaIcons.faCircleInfo,
 
     FaBrands.faSquareGithub,
     FaBrands.faLinkedin,
     FaBrands.faGithub
 );
+
+Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN;
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).
     use(globeRouter).
