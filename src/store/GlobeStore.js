@@ -111,6 +111,7 @@ export const useGlobeStore = defineStore("globe-store", () => {
     function setMapLayers(index = 1) {
         if(index == mapLayersIndex.value) { return; }
         cesiumGlobe.value.viewer.imageryLayers.removeAll(false);
+        if(window.innerWidth <= 1000) { router.push('/blank'); }
 
         if(index == 0) {
             mapLayersIndex.value = 0;
