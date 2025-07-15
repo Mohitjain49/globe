@@ -2,7 +2,7 @@ import * as Cesium from 'cesium';
 
 export const CESIUM_GLOBE_ID = "mohit-website-globe";
 export const CESIUM_GEOCODER_ID = "mohit-website-geocoder";
-const ONLINE_TEST_URL = "https://mohitjain49.github.io/globe/static-icons/Personal_Icon_Green_Expanded.png";
+const ONLINE_TEST_URL = "https://mohitjain49.github.io/globe/static-icons/Personal_Icon_Green_Expanded.ico";
 
 export const useGlobeStore = defineStore("globe-store", () => {
     const router = useRouter();
