@@ -1,3 +1,4 @@
+export const TAURI_MODE = (import.meta.env.MODE === "tauri");
 export const MAIN_WEBSITE = "https://www.mohit-jain.com/";
 export const WORLDS_IVUE_LINK = "https://www.worldsivue.com/";
 export const IVUE_WEBSITE_LINK = "https://www.ivueworld.com/";

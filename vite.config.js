@@ -3,11 +3,11 @@ import { defineConfig } from "vite";
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 import vue from "@vitejs/plugin-vue";
-import swc from "unplugin-swc";
-
 import Info from "unplugin-info/vite";
+
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
+import EnvTypes from 'vite-plugin-env-types';
 
 const cesiumSource = "node_modules/cesium/Build/Cesium";
 const cesiumBaseUrl = "cesium";
@@ -21,13 +21,13 @@ export default defineConfig({
     build: { chunkSizeWarningLimit: 5000 },
     plugins: [
         vue(),
-        swc.vite(),
         Info(),
-        Components({ dts: true }),
+        EnvTypes({ dts: "./dts/vite-env.d.ts" }),
+        Components({ dts: "./dts/components.d.ts" }),
         AutoImport({
             imports: ['vue', 'vue-router', 'pinia'],
             dirs: ["./src/store"],
-            dts: true,
+            dts: "./dts/auto-imports.d.ts",
             vueTemplate: true
         }),
         viteStaticCopy({
