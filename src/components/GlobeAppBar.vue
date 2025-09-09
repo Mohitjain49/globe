@@ -5,7 +5,7 @@
             <font-awesome-icon :icon="menu.faIcon" />
             <span> {{ menu.text }} </span>
         </RouterLink>
-        <a v-if="SHOW_DOWNLOAD_BTN" :href="WINDOW_INSTALL_PATH" class="globe-appBar-icon gold download" title="Download Globe as Windows OS App" download>
+        <a v-if="!TAURI_MODE" :href="WINDOW_INSTALL_PATH" class="globe-appBar-icon gold download" title="Download Globe as Windows OS App" download>
             <font-awesome-icon icon="fa-cloud-arrow-down" style="margin-top: 3px;" />
             <span> Download (Windows) </span>
         </a>
@@ -29,7 +29,6 @@
 
 <script setup>
 const screenStore = useScreenStore();
-const SHOW_DOWNLOAD_BTN = (import.meta.env.VITE_IS_TAURI === "false");
 const WINDOW_INSTALL_PATH = "https://mohitjain49.github.io/globe/mohit_globe_windows_installer.msi";
 
 const MAIN_MENUS = [
@@ -37,7 +36,7 @@ const MAIN_MENUS = [
     { route: "/map", faIcon: "fa-book-atlas", text: "Map", title: "Map Settings" },
     { route: "/about", faIcon: "fa-circle-info", text: "About", title: "About This App" },
     { route: "/options", faIcon: "fa-bars-staggered", text: "Options", title: "Options" },
-]
+];
 </script>
 
 <style scoped>

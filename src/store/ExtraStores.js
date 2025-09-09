@@ -57,8 +57,9 @@ export const usePageViewStore = defineStore("PageView", () => {
 });
 
 export const useScreenStore = defineStore("ScreenStore", () => {
-    const faIcon = ref("fa-expand");
-    const elementTitle = ref("Full Screen");
+    const fullScreenSet = ref(false);
+    const faIcon = computed(() => { return (fullScreenSet.value ? 'fa-compress' : 'fa-expand'); });
+    const elementTitle = computed(() => { return (fullScreenSet.value ? 'Exit Full Screen' : 'Full Screen'); });
 
     /**
      * This function sets whether the page takes up the whole screen or not.
@@ -85,19 +86,6 @@ export const useScreenStore = defineStore("ScreenStore", () => {
     }
 
     /**
-     * This sets the full screen reference objects.
-     */
-    function setFullScreenRef() {
-        if(getFullScreenStatus()) {
-            faIcon.value = "fa-compress";
-            elementTitle.value = "Exit Full Screen";
-        } else {
-            faIcon.value = "fa-expand";
-            elementTitle.value = "Full Screen";
-        }
-    }
-
-    /**
      * This function returns the status of whether or not the app is in full screen mode.
      */
     function getFullScreenStatus() {
@@ -108,7 +96,7 @@ export const useScreenStore = defineStore("ScreenStore", () => {
      * This sets the document event listener for a full screen change.
      */
     function setFullScreenEL() {
-        document.addEventListener("fullscreenchange", () => { setFullScreenRef(); });
+        document.addEventListener("fullscreenchange", () => { fullScreenSet.value = getFullScreenStatus(); });
     }
 
     /**
@@ -116,13 +104,13 @@ export const useScreenStore = defineStore("ScreenStore", () => {
      */
     function removeFullScreenEL() {
         document.exitFullscreen().then(() => {
-            document.removeEventListener("fullscreenchange", () => { setFullScreenRef(); });
+            document.removeEventListener("fullscreenchange", () => { fullScreenSet.value = getFullScreenStatus(); });
         }).catch(() => {
-            document.removeEventListener("fullscreenchange", () => { setFullScreenRef(); });
+            document.removeEventListener("fullscreenchange", () => { fullScreenSet.value = getFullScreenStatus(); });
         });
     }
 
-    return { faIcon, elementTitle,
+    return { fullScreenSet, faIcon, elementTitle,
         setFullScreen, getFullScreenStatus,
         setFullScreenEL, removeFullScreenEL
     }

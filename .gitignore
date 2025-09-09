@@ -12,9 +12,12 @@ node_modules
 dist
 dist-ssr
 dist-tauri
-dist-electron
+dev-dist
+dts
 coverage
 *.local
+
+.vite-ssg-temp
 
 /cypress/videos/
 /cypress/screenshots/
@@ -22,6 +25,7 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
@@ -32,6 +36,7 @@ coverage
 *.tsbuildinfo
 *components.d.ts
 *auto-imports.d.ts
+*vite-env.d.ts
 
 # .env files
 .env
