@@ -33,7 +33,16 @@ export default defineConfig(({ mode }) => {
             vue(),
             Info(),
             EnvTypes({ dts: "./dts/vite-env.d.ts" }),
-            Components({ dts: "./dts/components.d.ts" }),
+            Components({
+                dts: "./dts/components.d.ts",
+                resolvers: [
+                    (name) => {
+                        if(name === "FontAwesomeIcon") {
+                            return { name: "FontAwesomeIcon", from: '@fortawesome/vue-fontawesome' }
+                        }
+                    }
+                ]
+            }),
             AutoImport({
                 imports: ['vue', 'vue-router', 'pinia'],
                 dirs: ["./src/store"],
@@ -50,6 +59,7 @@ export default defineConfig(({ mode }) => {
             })
         ],
         clearScreen: false,
+        envPrefix: ['VITE_', 'TAURI_ENV_*'],
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url))

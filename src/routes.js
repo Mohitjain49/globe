@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NoMenu from "./menus/NoMenu.vue";
+import RedirectMenu from "./menus/RedirectMenu.vue";
 
 import SearchMenu from "./menus/SearchMenu.vue";
 import OptionsMenu from "./menus/OptionsMenu.vue";
@@ -14,6 +15,14 @@ export const globeViews = [
     { path: "/options", component: OptionsMenu },
     { path: "/map", component: MapMenu },
     { path: "/about", component: AboutMenu },
+
+    { path: "/wiv", alias: ["/worldsivue", "/worlds-ivue"], component: RedirectMenu, props: { link: WORLDS_IVUE_LINK } },
+    { path: "/repository", alias: ["/repo"], component: RedirectMenu, props: { link: REPOSITORY_LINK } },
+    { path: "/commits", component: RedirectMenu, props: { link: COMMITS_LINK } },
+
+    { path: "/mohit-website", component: RedirectMenu, props: { link: MAIN_WEBSITE } },
+    { path: "/linkedin", component: RedirectMenu, props: { link: LINKEDIN_PROFILE } },
+    { path: "/github", component: RedirectMenu, props: { link: GITHUB_PROFILE } },
 
     { path: "/blank", component: NoMenu },
     { path: '/:catchAll(.*)', redirect: "/blank" },
