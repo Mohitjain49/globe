@@ -43,7 +43,6 @@ jobs:
       - name: Build
         env:
           VITE_CESIUM_TOKEN: ${{ secrets.CESIUM_MAP_KEY }}
-          VITE_IS_TAURI: 'false'
         run: npm run build
       
       - name: Setup Pages
